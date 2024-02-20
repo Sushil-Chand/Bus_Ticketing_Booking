@@ -40,7 +40,7 @@ Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
 });
 
 Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
-    require __DIR__ . '/web/admin.php'; // sdmin route group
+    require __DIR__ . '/web/admin.php'; // admin route group
     require __DIR__ . '/web/adminuser.php';
     
 });
