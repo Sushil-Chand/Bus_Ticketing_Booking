@@ -1,6 +1,6 @@
 <?php
 
-//User
+//User // user view route
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;

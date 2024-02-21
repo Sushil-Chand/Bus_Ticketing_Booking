@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('address')->nullable();
+            $table->string('status')->default(1); // 0:inactive, 1:Enabled
             $table->unsignedBigInteger('contactno')->nullable();
             $table->string('profile_image')->nullable();
             $table->integer('usertype')->default(UserType::User);
