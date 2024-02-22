@@ -31,15 +31,15 @@
                             <table class="datatable table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>SN</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Contact</th>
                                         <th>Gender</th>
                                         <th>Address</th>
                                         <th>Profile Image</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
+                                        {{-- <th>Created At</th>
+                                        <th>Updated At</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,12 +48,18 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->contact }}</td>
-                                            <td>{{ $user->gender }}</td>
+                                            <td>{{ $user->contactno }}</td>
+                                            <td>{{ $user->profile_image }}</td>
                                             <td>{{ $user->address }}</td>
-                                            <td><img src="{{ $user->profile_image ? profile_images/($user->profile_image) : 'https://via.placeholder.com/150' }}" alt="Profile Image" width="100"></td>
-                                            <td>{{ $user->created_at }}</td>
-                                            <td>{{ $user->updated_at }}</td>
+                                            <td>
+                                                @if (!empty($user->profile_image))
+                                              
+                                                    <img src="{{ asset('images/profile_pictures/' . $user->profile_image) }}" alt="Profile Image">
+                                                @else
+                                                    <p>No profile image available.</p>
+                                                @endif
+                                            </td>
+                                            {{-- <td>{{ $user->updated_at }}</td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -33,23 +33,23 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            // 'contactno' => 'required|string',
-            // 'address' => 'required|string',
-            // 'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'contactno' => 'required|string',
+            'address' => 'required|string',
+            // 'profile_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address'=>$request->address,
-            'contactno'=>$request->contactno,
-            'profile_image'=>$request->profile_image,
-            'password' => Hash::make($request->password),
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'address'=>$request->address,
+        //     'contactno'=>$request->contactno,
+            
+        //     'password' => Hash::make($request->password),
 
             
     
-        ]);
+        // ]);
 
         // store register user 
         
@@ -57,31 +57,27 @@ class RegisteredUserController extends Controller
             // dd($users);
         
 
-            if ($request->hasFile('profile_image')) {
-                $gallery = $request->file('profile_image');
-                $extension = $gallery->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-    
-                // Store the file in the 'public' disk under the 'profile_images' directory
-                $path = $gallery->storeAs('profile_images', $filename, 'public');
-    
-                // Save the file path to the 'profile_image' attribute of the user model
-                $profileImagePath = 'profile_images/' . $filename;
-                // dd($profileImagePath);
-            } else {
-                $profileImagePath = null;
-            }
-    
+                
+               // Handle profile picture upload
+        
+        $user = new User;
+        $user-> name = $request-> name;
+        $user-> email = $request->email;
+        $user->address = $request->address;
+        $user-> contactno= $request->contactno;
+        $user-> password = Hash::make($request->password);
+       
 
+        if ($request->hasFile('profile_image')) {
+            $file = $request->file('profile_image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            
+            $file->move(public_path('images/profile_pictures'), $filename);
+            $user->profile_image = $filename;
+        }
+       
 
-        // $user = new User;
-        // $user-> name = $request-> name;
-        // $user-> email = $request->email;
-        // $user->address = $request->address;
-        // $user-> contactno= $request->contactno;
-        // $user-> password = Hash::make($request->password);
-        // $user->profile_image= $request->$profileImagePath;
-        // $user->save();
+        $user->save();
 
         event(new Registered($user));
 
