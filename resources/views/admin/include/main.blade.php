@@ -2,7 +2,7 @@
 <html lang="en">
 
   @include('admin.include.header')
-
+ 
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
     
@@ -14,7 +14,9 @@
 
       <!-- Main content -->
       <section class="content">
+        
         @yield('content')
+      
       </section>
       <!-- /.content -->
 

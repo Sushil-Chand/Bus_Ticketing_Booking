@@ -1,75 +1,111 @@
 @extends('admin.dashboard')
 @section('title', 'User Index')
 
+
 @section('content')
-<br>
-<br>
-<br>
+
+<style>
+
+.profile-image-wrapper {
+    width: 100px; /* Set the width and height to create a circular shape */
+    height: 100px;
+    overflow: hidden;
+    
+    border-radius: 50%; /* Make it circular */
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+   
+    
+    object-fit: cover; /* Ensure the image covers the circular area */
+    border-radius: 50%; /* Make it circular */
+}
+</style>
+
+
 <div class="content-wrapper">
-<div class="content">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb float-right">
-                        <li class="breadcrumb-item active">User</li>
-                    </ol>
+    <div class="content">
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        {{-- <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item active">User</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section> --}}
 
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <a href="#" class="btn btn-primary px-4 m-2 float-right">Add</a>
-                        </div>
-                        <div class="card-body table-responsive p-2">
-                            <table class="datatable table">
-                                <thead>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Contact</th>
-                                        <th>Gender</th>
-                                        <th>Address</th>
-                                        <th>Profile Image</th>
-                                        {{-- <th>Created At</th>
-                                        <th>Updated At</th> --}}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($users as $user)
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                           
+                            <div class="card-header">
+                               
+                                <p class="btn btn-primary px-4 m-2 float-left">User List</p>
+                            </div>
+                            <div class="card-body table-responsive p-2">
+                                <table class="datatable table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $user->id }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->contactno }}</td>
-                                            <td>{{ $user->profile_image }}</td>
-                                            <td>{{ $user->address }}</td>
-                                            <td>
-                                                @if (!empty($user->profile_image))
-                                              
-                                                    <img src="{{ asset('images/profile_pictures/' . $user->profile_image) }}" alt="Profile Image">
-                                                @else
-                                                    <p>No profile image available.</p>
-                                                @endif
-                                            </td>
-                                            {{-- <td>{{ $user->updated_at }}</td> --}}
+                                            <th>SN</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            
+                                            <th>Address</th>
+                                            <th>Profile Image</th>
+                                            <th>Status</th>
+                                            <th>Created At</th>
+                                            {{-- <th>Updated At</th> --}}
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($users as $user)
+                                            <tr>
+                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->contact }}</td>
+                                                
+                                                <td>{{ $user->address }}</td>
+                                                <td>
+                                                    <div class="profile-image-wrapper">
+                                                        <img src="{{ $user->profile_image ? asset('images/profile_pictures/' . $user->profile_image): '' }}" alt="Profile Image" class="profile-image" width="100">
+                                                    </div>
+                                                </td>
+                                                <td>{{ $user->status }}</td>
+
+                                                <td>{{ $user->created_at }}</td>
+                                                {{-- <td>{{ $user->updated_at }}</td> --}}
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="9" class="text-center">No users found.</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
-</div>
+
+
+
 @endsection
+

@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
         
 
                 
-               // Handle profile picture upload
+              
         
         $user = new User;
         $user-> name = $request-> name;
@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
         $user-> contactno= $request->contactno;
         $user-> password = Hash::make($request->password);
        
-
+                 // Handle profile picture upload
         if ($request->hasFile('profile_image')) {
             $file = $request->file('profile_image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
