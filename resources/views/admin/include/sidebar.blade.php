@@ -67,22 +67,14 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-bus"></i>
+                        <i class="nav-icon fas fa-house"></i>
                         <p>
                          Operator
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-th"></i>
-                      <p>
-                        Widgets
-                       
-                      </p>
-                    </a>
-                  </li>
+             
                   
                 
                 <div class="text-center mt-auto p-3">

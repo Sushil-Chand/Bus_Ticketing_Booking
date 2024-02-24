@@ -1,4 +1,31 @@
 <section>
+
+
+    
+    
+    
+  
+    
+    <style>
+
+        .profile-image-wrapper {
+            width: 100px; /* Set the width and height to create a circular shape */
+            height: 100px;
+            overflow: hidden;
+            
+            border-radius: 50%; /* Make it circular */
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+           
+            
+            object-fit: cover; /* Ensure the image covers the circular area */
+            border-radius: 50%; /* Make it circular */
+        }
+        </style>
+
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -13,38 +40,45 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" >
         @csrf
         @method('patch')
 
+         {{-- profile Image update--}}
+         <div class="profile-image-wrapper">
+            <img src="{{ $user->profile_image ? asset('images/profile_pictures/' . $user->profile_image): '' }}" alt="No Image" class="profile-image" width="100">
+        </div>
+        <div>
+        <label for="profile_image" class="cursor-pointer">
+            <x-input-label :value="__('Change Image')" />
+            <input id="profile_image" name="profile_image" type="file" class="hidden" :value="old('profile_image', $user->profile_image)" onchange="updateProfileImage()">
+        </label>
+        <x-input-error class="mt-2" :messages="$errors->get('profile_image')" />
+    </div>
+
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"  />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+
+        {{-- Address update--}}
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" required autofocus autocomplete="address" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+        </div>
+
+        {{-- contact number update--}}
+        <div>
+            <x-input-label for="contactno" :value="__('Phone Number')" />
+            <x-text-input id="contactno" name="contactno" type="number" class="mt-1 block w-full" :value="old('contactno', $user->contactno)"  />
+            <x-input-error class="mt-2" :messages="$errors->get('contactno')" />
+        </div>
+
+
         
-
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
-
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-        </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -84,4 +118,6 @@
             @endif
         </div>
     </form>
+
+    
 </section>

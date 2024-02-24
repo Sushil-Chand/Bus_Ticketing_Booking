@@ -76,15 +76,22 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->contact }}</td>
+                                                <td>{{ $user->contactno }}</td>
                                                 
                                                 <td>{{ $user->address }}</td>
                                                 <td>
                                                     <div class="profile-image-wrapper">
-                                                        <img src="{{ $user->profile_image ? asset('images/profile_pictures/' . $user->profile_image): '' }}" alt="Profile Image" class="profile-image" width="100">
+                                                        <img src="{{ $user->profile_image ? asset('images/profile_pictures/' . $user->profile_image): '' }}" alt="No Image" class="profile-image" width="100">
                                                     </div>
                                                 </td>
-                                                <td>{{ $user->status }}</td>
+                                                <td>
+                                                    <a href="{{ route('user.status', ['id' => $user->id]) }}" class="btn btn-sm btn-{{ $user->status ? 'success' : 'danger' }}">
+                                                        {{ $user->status ? 'Active' : 'Inactive' }}
+                                                    </a>
+
+                                                    
+                                                </td>
+
 
                                                 <td>{{ $user->created_at }}</td>
                                                 {{-- <td>{{ $user->updated_at }}</td> --}}

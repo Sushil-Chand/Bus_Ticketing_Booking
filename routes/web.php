@@ -35,7 +35,8 @@ require __DIR__.'/auth.php';
 
 
 Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
-    require __DIR__ . '/web/user.php'; // user route group
+    require __DIR__ . '/web/user.php';
+   
     
 });
 

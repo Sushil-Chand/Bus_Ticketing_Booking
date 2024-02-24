@@ -9,6 +9,8 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+       
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
@@ -33,7 +35,7 @@
             <!-- User profile picture -->
         <div class="mt-4">
             <x-input-label for="profile_image" :value="__('Upload  Image')" />
-            <x-text-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" :value="old('profile_image')" required autocomplete="username" />
+            <x-text-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" :value="old('profile_image')"/>
             <x-input-error :messages="$errors->get('profile_image')" class="mt-2" />
         </div>
 

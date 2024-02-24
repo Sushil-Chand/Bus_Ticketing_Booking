@@ -1,15 +1,12 @@
 @extends('admin.include.main')
 @section('title', 'Dashboard')
 @section('content')
-<head>
-  <!-- ... existing head content ... -->
-  @yield('styles') <!-- Include additional styles from child views -->
-</head>
-<div>
+
+{{-- <div>
     @if(session('message'))
         <h2 class="alert alert-success">{{session('message')}}</h2>    
     @endif
-</div>
+</div> --}}
 <hr>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

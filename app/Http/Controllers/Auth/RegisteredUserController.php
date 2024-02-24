@@ -39,17 +39,17 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'address'=>$request->address,
-        //     'contactno'=>$request->contactno,
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address'=>$request->address,
+            'contactno'=>$request->contactno,
             
-        //     'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password),
 
             
     
-        // ]);
+        ]);
 
         // store register user 
         
@@ -60,12 +60,12 @@ class RegisteredUserController extends Controller
                 
               
         
-        $user = new User;
-        $user-> name = $request-> name;
-        $user-> email = $request->email;
-        $user->address = $request->address;
-        $user-> contactno= $request->contactno;
-        $user-> password = Hash::make($request->password);
+        // $user = new User;
+        // $user-> name = $request-> name;
+        // $user-> email = $request->email;
+        // $user->address = $request->address;
+        // $user-> contactno= $request->contactno;
+        // $user-> password = Hash::make($request->password);
        
                  // Handle profile picture upload
         if ($request->hasFile('profile_image')) {
