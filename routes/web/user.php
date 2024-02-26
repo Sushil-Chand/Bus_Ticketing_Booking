@@ -10,3 +10,4 @@ Route::get('/user/profile', [UserController::class, 'profile'])->name('profile.u
 Route::put('/user/profile/update', [UserController::class, 'profileupdate'])->name('profile.userupdate');
 Route::post('/user/profile/address/store',  [UserController::class, 'storeAddress'])->name('profile.address.store');
 Route::delete('/user/profile/address/delete/{id}',  [UserController::class, 'deleteAddress'])->name('profile.address.delete');
+

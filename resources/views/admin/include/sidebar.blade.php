@@ -37,7 +37,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('drivers.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                           Driver
@@ -45,14 +45,14 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bus"></i>
                         <p>
                             Buses
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a href="{{route('user.index')}}" class="nav-link">
@@ -66,7 +66,7 @@
                 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('operators.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-house"></i>
                         <p>
                          Operator

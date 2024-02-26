@@ -55,7 +55,7 @@
                                 <p class="btn btn-primary px-4 m-2 float-left">User List</p>
                             </div>
                             <div class="card-body table-responsive p-2">
-                                <table class="datatable table table-bordered table-striped">
+                                <table class="table mt-3">
                                     <thead>
                                         <tr>
                                             <th>SN</th>

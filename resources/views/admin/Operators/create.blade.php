@@ -4,76 +4,65 @@
 @section('title', 'Create Operator')
 
 @section('content')
+
+
+<style>
+
+.container{
+    border: 1px solid #140404; /* Border color and style */
+    padding: 20px; /* Adjust padding as needed */
+}
+</style>
+
     <div class="content-wrapper">
         <div class="content">
-            <div class="modal fade" id="exampleModalCenteraddbus" tabindex="-1" role="dialog" 
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title" id="exampleModalLongTitle" align="center">
-            <i class="glyphicon glyphicon-log-in">Add New Operator</i></h2>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <form method="post" action="{{ route('operators.store') }}" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-                      <fieldset>
-                      <div class="row">
-                      <div class="col-md-6">
-                          <div class="form-group">
-                                <!-- <label for="exampleInputEmail1">Bus Name</label> -->
-                                <input name="name"  class="form-control" aria-describedby="emailHelp"
-                                 placeholder="Enter Operator Name" type="text">
-                          </div>
-                          </div>
-                          <div class="col-md-6">
-                          <div class="form-group">
-                                <!-- <label for="exampleInputEmail1">Bus Name</label> -->
-                                <input name="email"  class="form-control" aria-describedby="emailHelp" 
-                                placeholder="Enter Email" type="email">
-                          </div>
-                          </div>
-                          </div>
-                          <div class="form-group">
-                                <!-- <label for="exampleInputEmail1">Bus Name</label> -->
-                                <input name="phone"  class="form-control" aria-describedby="emailHelp"
-                                 placeholder="Enter Mobile Number" type="text">
-                          </div>
-                          <div class="form-group">
-                                <!-- <label for="exampleInputPassword1">Seat No</label> -->
-                                <textarea name="address" rows="2" cols="20" class="form-control" 
-                                placeholder="Enter Operator Address" type="text"></textarea>
-                          </div>
-                          {{-- <div class="form-group">
-                                <!-- <label for="exampleInputPassword1">Seat No</label> -->
-                                <textarea name="operator_description" rows="2" cols="20" class="form-control" 
-                                placeholder="Enter Operator Description" type="text"></textarea>
-                          </div> --}}
-                          <div class="col-md-3">
-                          <div class="form-group">
-                                <input name="status"  aria-describedby="emailHelp" type="checkbox">
-                                <label for="exampleInputEmail1">Active</label>
-                          </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                        <label class="control-label">Image</label>
+            <br>
+            <br>
+            <br>
+            <div class="container">
+              <br>
+                <h2 class="text-center">Add New Operator</h2>
+                <form method="POST" action="{{ route('operators.store') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    @csrf
+                    @method('post')
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Operator Name</label>
+                                <input name="name" class="form-control" placeholder="Enter Operator Name" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input name="email" class="form-control" placeholder="Enter Email" type="email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input name="phone" class="form-control" placeholder="Enter Mobile Number" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Operator Address</label>
+                        <textarea name="address" rows="2" class="form-control" placeholder="Enter Operator Address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Active</label>
+                        <input name="status" type="checkbox">
+                    </div>
+                    <div class="form-group">
+                        <label for="logo">Image</label>
                         <input type="file" name="logo">
-                </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Register Operator</button>
+                    </div>
+                </form>
             </div>
-                      </fieldset>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Register Operator</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
-    </div>
+
     
 @endsection
