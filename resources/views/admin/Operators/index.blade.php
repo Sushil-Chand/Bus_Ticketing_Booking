@@ -4,9 +4,20 @@
 @section('content')
 <br>
 <br>
-<br>
+
+
+<style>
+    .logo-image {
+        max-width: 70px; /* Set a maximum width */
+        max-height: 80px; /* Set a maximum height */
+        border-radius: 20%; /* Make it circular, adjust as needed */
+        /* Add more styling as per your design */
+    }
+</style>
     <div class="content-wrapper">
         <div class="content">
+            <br>
+            <br>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -33,32 +44,35 @@
                                         <th>Address</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
+                                        <th>picture>th>
                                         </thead>
                                         <tbody>
                                         @foreach($operators as $data)
                                             <tr>
-                                                <td>{{ $data->operator_id }}</td>
+                                                <td>{{ $data->id }}</td>
                                                 <td>
-                                                    <a data-toggle="modal" data-target="#exampleModalCenterviewOperator{{ $data->id }}"
-                                                       data-toggle="tooltip">{{ $data->name }}</a>
+                                                  {{ $data->name }}</a>
                                                 </td>
                                                 <td>{{ $data->email }}</td>
                                                 <td>{{ $data->phone }}</td>
                                                 <td>{{ $data->address }}</td>
                                                 <td>{{ $data->created_at }}</td>
                                                 <td>
-                                                    <form action="{{ '/admin/operator/' . $data->id }}" method="post">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <input type="submit" name="submit" value="Edit" class="btn btn-sm btn-info"/>
-                                                        <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger"/>
-                                                    </form>
-                                                </td>
-                                                    {{--image of operator image --}}
-                                                {{-- <td>
-                                                    <img src="{{ asset('storage/operator_images/' .$data->operator_logo) }}"
-                                                        alt="{{ $data->operator_name }}">
-                                                </td>  --}} 
+                                                        
+                                                   <a href="{{ route('operators.edit',$data->id) }}" class="btn btn-warning">Edit</a>
+                                                   <form action="{{ route('operators.destroy', $data->id) }}" method="POST" style="display:inline">
+                                                       @csrf
+                                                       @method('DELETE')
+                                                       <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                                   </form> 
+                                                      
+<!-- ... -->
+
+                                               
+                                                <td>
+                                                    <img src="{{ asset('images/operators_picture/' .$data->logo) }}"
+                                                        alt="{{ $data->logo }}" class="logo-image">
+                                                </td> 
                                             </tr>
                                         @endforeach
                                         </tbody>

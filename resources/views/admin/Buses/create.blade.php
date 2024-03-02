@@ -26,14 +26,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Bus Name:</label>
-                                            <input type="text" name="bus_name" id="bus_name" class="form-control" required>
+                                            <input type="text" name="bus_name" id="bus_name" placeholder="Enter Bus Name"  class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Bus Code:</label>
-                                            <input type="text" name="bus_code" id="bus_code" class="form-control" required>
+                                            <input type="text" name="bus_code" id="bus_code" placeholder=" Enter Bus Code" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Bus Type:</label>
-                                            <input type="text" name="type" id="type" class="form-control" required>
+                                            <input type="text" name="type" id="type" placeholder=" Enter Bus Type" class="form-control" required>
                                         </div>
                                     </div>
 
@@ -51,7 +51,7 @@
                                             <label class="bmd-label-floating">Operator:</label>
                                             <select name="operator_id" id="operator_id" class="form-control" required>
                                                 @foreach($operators as $operator)
-                                                <option value="{{ $operator->id }}">{{ $operator->operator_name }}</option>
+                                                <option value="{{ $operator->id }}">{{ $operator->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -62,11 +62,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Total Seats:</label>
-                                            <input type="number" name="total_seats" id="total_seats" class="form-control" required>
+                                            <input type="number" name="total_seats" id="total_seats"  placeholder=" Bus Seat capacity" class="form-control" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">User:</label>
                                             <select name="user_id" id="user_id" class="form-control" required>
@@ -75,7 +75,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="row">

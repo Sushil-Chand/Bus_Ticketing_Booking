@@ -8,9 +8,9 @@
 <br>
 
 <div class="content-wrapper">
-    <div class="content">
-    <div class="container">
-
+    {{-- <div class="content">
+    <div class="container"> --}}
+        <br>
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -19,16 +19,16 @@
                            
                             <div class="card-header">
                             <h2>Drivers</h2>
-                            <a href="{{ route('drivers.create') }}" class="btn btn-primary">Add Driver</a>
+                            <a href="{{ route('drivers.create') }}" class="btn btn-primary float-right">Add Driver</a>
                                     <hr>
                             @if (session('success'))
                                 <div class="alert alert-success mt-3">
                                     {{ session('success') }}
                                 </div>
                             @endif
-
+                           <div class="card-body table-responsive p-2">
                             <table class="table mt-3">
-                                <thead>
+                                <thead class="text-primary">
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
@@ -60,7 +60,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                          </div>
+                     </div>
                     </div>
                     </div>
                 </div>

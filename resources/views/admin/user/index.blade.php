@@ -32,17 +32,7 @@
         <br>
         <br>
         
-        {{-- <section class="content-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <ol class="breadcrumb float-right">
-                            <li class="breadcrumb-item active">User</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+  
 
         <section class="content">
             <div class="container-fluid">
@@ -52,11 +42,11 @@
                            
                             <div class="card-header">
                                
-                                <p class="btn btn-primary px-4 m-2 float-left">User List</p>
+                                <h2 class=" text-primary px-4 m-2 float-left">User List</h2>
                             </div>
                             <div class="card-body table-responsive p-2">
                                 <table class="table mt-3">
-                                    <thead>
+                                    <thead class="text-primary">
                                         <tr>
                                             <th>SN</th>
                                             <th>Name</th>

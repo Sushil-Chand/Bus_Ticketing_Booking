@@ -31,25 +31,38 @@ class OperatorController extends Controller
     public function store(Request $request)
     {
         // we are validating our inputs okay to avoid having error when inserting okay.
+       
         $this->validate($request,[
             'name' => 'required',
              'email' => 'required',
              'address' => 'required',
              'phone' => 'required',
-             'logo' => 'image|max:2048',
+            //  'logo' => 'image|max:2048',
         ]);
 
-            $image =  $request->file('logo');
+        $operators = new Operator;
+        $operators->name = $request->name;
+        $operators->email = $request->email;
+        $operators->address = $request->address;
+        $operators->phone = $request->phone;
+        $operators->logo = $request->filename;
 
-            $image_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('operator_images'), $image_name);
+            // $image =  $request->file('logo');
 
-            $operators = new Operator;
-            $operators->name = $request->name;
-            $operators->email = $request->email;
-            $operators->address = $request->address;
-            $operators->phone = $request->phone;
-            $operators->logo = $image_name;
+            // $image_name = rand() . '.' . $image->getClientOriginalExtension();
+            // $operator_images = 'events';
+            // $image->move(public_path('operator_images'), $image_name);
+
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                
+                $file->move(public_path('images/operators_picture'), $filename);
+                $operators->logo = $filename;
+            }
+           
+
+        
 
                 // dd($operators);
             $operators->save(); // THIS SAVE FUNCTION WILL SAVE THE DATA OKAY
@@ -82,29 +95,57 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operator = Operator::findOrFail($id);
+    
+        return view('admin.Operators.edit', compact('operator'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $operator = Operator::findOrFail($id);
+    
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            // Add more validation rules as needed
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
+        ]);
+    
+        // Update operator details
+        $operator->name = $request->input('name');
+        $operator->email = $request->input('email');
+        // Update more fields as needed
+    
+        // Handle logo update
+        if ($request->hasFile('logo')) {
+            // Delete old logo if exists
+            if ($operator->logo) {
+                unlink(public_path('images/operators_picture/' . $operator->logo));
+            }
+    
+            $logo = $request->file('logo');
+            $logoName = time() . '.' . $logo->getClientOriginalExtension();
+            $logo->move(public_path('images/operators_picture/'), $logoName);
+            $operator->logo = $logoName;
+        }
+    
+        $operator->save();
+    
+        return redirect()->route('operators.index')->with('success', 'Operator updated successfully');
     }
- 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $operator = Operator::findOrFail($id);
+
+        // Delete associated logo
+        if ($operator->logo) {
+            unlink(public_path('images/operators_picture/' . $operator->logo));
+        }
+
+        $operator->delete();
+
+        return redirect()->route('operators.index')->with('success', 'Operator deleted successfully');
     }
 }

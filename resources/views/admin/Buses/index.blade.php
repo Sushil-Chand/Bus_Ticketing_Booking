@@ -5,14 +5,16 @@
 @section('content')
 <br>
 <br>
-<br>
+
     <div class="content-wrapper">
         <div class="content">
+            <br>
+            <br>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <span class="pull-center">
-                            <a href="{{ route('buses.create') }}" class="btn btn-sm btn-primary">
+                            <a href="{{ route('buses.create') }}" class="btn btn-sm btn-primary float-right" >
                                 <i class="glyphicon glyphicon-plus"></i> Add New Bus
                             </a>
                         </span>
