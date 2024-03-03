@@ -30,9 +30,9 @@ class BusController extends Controller
     {
         $operators = Operator::all();
         $drivers = Driver::all();
-        $users = User::all();
+        // $users = User::all();
 
-        return view('admin.Buses.create', compact('operators', 'drivers', 'users'));
+        return view('admin.Buses.create', compact('operators', 'drivers'));
     }
 
     /**
@@ -49,16 +49,16 @@ class BusController extends Controller
         'type' => 'required|string',
         'operator_id' => 'required|exists:operators,id',
         'total_seats' => 'required|integer',
-        'user_id' => 'required|exists:users,id',
+        // 'user_id' => 'required|exists:users,id',
         'driver_id' => 'required|exists:drivers,id',
         'status' => 'required|boolean',
     ]);
-
+   
     $busData = $request->all();
     // dd($busData); // Output the data to check if it's correct
-
+    
     Bus::create($busData);
-
+   
     return redirect(route('buses.index'))->with('success', 'Bus created successfully.');
 }
 
@@ -74,9 +74,9 @@ class BusController extends Controller
         $bus = Bus::findOrFail($id);
         $operators = Operator::all();
         $drivers = Driver::all();
-        $users = User::all();
+        // $users = User::all();
 
-        return view('buses.edit', compact('bus', 'operators', 'drivers', 'users'));
+        return view('admin.Buses.edit', compact('bus', 'operators', 'drivers'));
     }
 
     /**
@@ -87,14 +87,14 @@ class BusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         $request->validate([
             'bus_name' => 'required|string',
             'bus_code' => 'required|string',
             'type' => 'required|string',
             'operator_id' => 'required|exists:operators,id',
             'total_seats' => 'required|integer',
-            'user_id' => 'required|exists:users,id',
+            // 'user_id' => 'required|exists:users,id',
             'driver_id' => 'required|exists:drivers,id',
             'status' => 'required|boolean',
         ]);

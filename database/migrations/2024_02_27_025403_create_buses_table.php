@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type');
             $table->foreignId('operator_id')->constrained('operators','id');
             $table->integer('total_seats');
-            $table->foreignId('user_id')->constrained('users','id');
+            $table->foreignId('user_id')->constrained('users','id')->nullable();
             $table->foreignId('driver_id')->constrained('drivers','id');
             $table->boolean('status')->default(1);
             $table->timestamps();

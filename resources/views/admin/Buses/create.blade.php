@@ -66,29 +66,23 @@
                                         </div>
                                     </div>
 
-                                    {{-- <div class="col-md-6">
-                                        <div class="form-group bmd-form-group">
-                                            <label class="bmd-label-floating">User:</label>
-                                            <select name="user_id" id="user_id" class="form-control" required>
-                                                @foreach($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div> --}}
-                                </div>
-
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Driver:</label>
                                             <select name="driver_id" id="driver_id" class="form-control" required>
-                                                @foreach($drivers as $driver)
-                                                <option value="{{ $driver->id }}">{{ $driver->name }}</option>
+                                                @foreach($drivers as $driver) 
+                                                    <option value="{{ $driver->id }}" >
+                                                        {{ $driver->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
+
+                                    
 
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
@@ -110,6 +104,10 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
+
+
+
 @endsection

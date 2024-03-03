@@ -22,8 +22,8 @@
                         <br>
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Buses List</h4>
-                                <p class="card-category">List of buses</p>
+                                <h4 class="card-title">Number OF Buses</h4>
+                               
                             </div>
                             <div class="card-body">
                                 @if(count($buses) > 0)
@@ -55,11 +55,11 @@
                                                     <td>{{ $bus->status ? 'Active' : 'Inactive' }}</td>
                                                     <td>{{ $bus->created_at }}</td>
                                                     <td>
-                                                        <form action="{{ route('buses.edit', $bus->id) }}" method="post">
+                                                        <a href="{{ route('buses.edit', $bus->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                                        <form action="{{ route('buses.destroy', $bus->id) }}" method="POST" style="display:inline">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-info">Edit</button>
-                                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>

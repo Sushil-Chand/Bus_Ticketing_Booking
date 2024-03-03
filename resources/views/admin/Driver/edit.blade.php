@@ -6,12 +6,19 @@
 @section('content')
 <br>
 <br>
-<br>
-<br>
+
 <div class="content-wrapper">
     <div class="content">
+        <br>
+<br>
     <div class="container">
-        <h2>Edit Driver</h2>
+       
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit Driver</div>
+
+                    <div class="card-body">
+    
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -25,7 +32,7 @@
 
         <form action="{{ route('drivers.update', $driver->id) }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('put')
         
             <div class="form-group">
                 <label for="name">Name:</label>
