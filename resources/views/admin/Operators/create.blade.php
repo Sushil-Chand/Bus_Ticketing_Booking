@@ -21,6 +21,9 @@
             <br>
             <div class="container">
               <br>
+              <button onclick="window.location='{{ route('operators.index') }}'" class="btn btn-primary">
+                <i class="fa fa-arrow-left"></i> Back
+            </button>
                 <h2 class="text-center">Add New Operator</h2>
                 <form method="POST" action="{{ route('operators.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}

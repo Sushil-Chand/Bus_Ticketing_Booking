@@ -13,9 +13,14 @@
 
         <div class="container-fluid">
             <div class="row">
+                <button onclick="window.location='{{ route('buses.index') }}'" class="btn btn-primary">
+                    <i class="fa fa-arrow-left"></i> Back
+                </button>
                 <div class="col-md-12">
                     <div class="card">
+                       
                         <div class="card-header card-header-primary">
+                            
                             <h4 class="card-title">Create New Bus</h4>
                         </div>
                         <div class="card-body">

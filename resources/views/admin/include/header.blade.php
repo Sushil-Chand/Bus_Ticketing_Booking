@@ -25,6 +25,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <!-- In your HTML file, typically in the head section -->
     <link rel="stylesheet" href="{{ asset('css/operator.styles.css') }}">
-
+    
   </head>
   

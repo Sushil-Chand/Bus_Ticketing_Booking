@@ -26,9 +26,14 @@
    <div class="container-fluid">
 
     <div class="container">
+        
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <button onclick="window.location='{{ route('drivers.index') }}'" class="btn btn-primary">
+                    <i class="fa fa-arrow-left"></i> Back
+                </button>
                 <div class="card">
+                    
                     <div class="card-header">Create a New Driver</div>
 
                     <div class="card-body">

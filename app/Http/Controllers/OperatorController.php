@@ -82,17 +82,8 @@ class OperatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
+     
     public function edit($id)
     {
         $operator = Operator::findOrFail($id);
@@ -101,39 +92,44 @@ class OperatorController extends Controller
     }
     
     public function update(Request $request, $id)
-    {
-        $operator = Operator::findOrFail($id);
-    
-        // Validate the request
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            // Add more validation rules as needed
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
-        ]);
-    
-        // Update operator details
-        $operator->name = $request->input('name');
-        $operator->email = $request->input('email');
-        // Update more fields as needed
-    
-        // Handle logo update
-        if ($request->hasFile('logo')) {
-            // Delete old logo if exists
-            if ($operator->logo) {
-                unlink(public_path('images/operators_picture/' . $operator->logo));
-            }
-    
-            $logo = $request->file('logo');
-            $logoName = time() . '.' . $logo->getClientOriginalExtension();
-            $logo->move(public_path('images/operators_picture/'), $logoName);
-            $operator->logo = $logoName;
-        }
-    
-        $operator->save();
-    
-        return redirect()->route('operators.index')->with('success', 'Operator updated successfully');
+{
+    $operator = Operator::findOrFail($id);
+
+    // Validate the request
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|numeric',
+        'address' => 'required|string',
+        'status' => 'boolean',
+        'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Update operator details
+    $operator->name = $request->input('name');
+    $operator->email = $request->input('email');
+    $operator->phone = $request->input('phone');
+    $operator->address = $request->input('address');
+    $operator->status = $request->input('status') ? 1 : 0; // Assuming 'status' is a boolean field
+
+    // Handle logo update
+    if ($request->hasFile('logo')) {
+        // Delete old logo if exists
+        // if ($operator->logo) {
+        //     unlink(public_path('images/operators_picture/' . $operator->logo));
+        // }
+
+        $logo = $request->file('logo');
+        $logoName = time() . '.' . $logo->getClientOriginalExtension();
+        $logo->move(public_path('images/operators_picture/'), $logoName);
+        $operator->logo = $logoName;
     }
+
+    $operator->save();
+
+    return redirect()->route('operators.index')->with('success', 'Operator updated successfully');
+}
+
 
     public function destroy($id)
     {
@@ -141,9 +137,13 @@ class OperatorController extends Controller
 
         // Delete associated logo
         if ($operator->logo) {
-            unlink(public_path('images/operators_picture/' . $operator->logo));
+            $filePath = public_path('images/operators_picture/' . $operator->logo);
+    
+            // Check if the file exists before attempting to unlink
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
-
         $operator->delete();
 
         return redirect()->route('operators.index')->with('success', 'Operator deleted successfully');

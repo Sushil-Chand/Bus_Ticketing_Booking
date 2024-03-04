@@ -46,6 +46,16 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('operators.index')}}" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <p>
+                         Operator
+                        </p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
                     <a href="{{route('buses.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-bus"></i>
                         <p>
@@ -65,15 +75,7 @@
 
                 
 
-                <li class="nav-item">
-                    <a href="{{route('operators.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-house"></i>
-                        <p>
-                         Operator
-                        </p>
-                    </a>
-                </li>
-
+              
              
                   
                 

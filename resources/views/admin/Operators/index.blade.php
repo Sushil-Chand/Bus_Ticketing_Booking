@@ -44,7 +44,8 @@
                                         <th>Address</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
-                                        <th>picture>th>
+                                        <th>Status</th>
+                                        <th>picture</th>
                                         </thead>
                                         <tbody>
                                         @foreach($operators as $data)
@@ -67,7 +68,7 @@
                                                    </form> 
                                                       
 <!-- ... -->
-
+                                                <td>{{ $data->status ? 'Active' : 'Inactive' }}</td>
                                                
                                                 <td>
                                                     <img src="{{ asset('images/operators_picture/' .$data->logo) }}"
