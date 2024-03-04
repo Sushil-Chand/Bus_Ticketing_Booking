@@ -37,7 +37,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
-                                            <label class="bmd-label-floating">Bus Code:</label>
+                                            <label class="bmd-label-floating">Bus Number:</label>
                                             <input type="text" name="bus_code" id="bus_code" placeholder=" Enter Bus Code" class="form-control" required>
                                         </div>
                                     </div>
