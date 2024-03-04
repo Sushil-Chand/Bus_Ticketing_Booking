@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('sub_region_name');
             $table->string('sub_region_code');
-            $table->integer('region_id'); // its the Fk okay
+            $table->foreignId('region_id')->constrained('regions'); // its the Fk okay
             $table->boolean('status')->default(0); // active
             $table->timestamps();
         });
