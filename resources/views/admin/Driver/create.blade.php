@@ -65,6 +65,10 @@
                                 <input type="text" name="contact_number" id="contact_number" placeholder="Enter contact number" class="form-control" required>
                             </div>
 
+                            <div class="form-group">
+                                <label for="status">Active</label>
+                                <input name="status" type="checkbox">
+                            </div>
                           
                             <!-- Add more fields as needed -->
 

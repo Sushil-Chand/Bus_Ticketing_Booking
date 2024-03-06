@@ -61,6 +61,16 @@
                 <input type="text" name="contact_number" id="contact_number" class="form-control" value="{{ old('contact_number', $driver->contact_number) }}" required>
             </div>
         
+            <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                    <label class="bmd-label-floating">Status:</label>
+                    <select name="status" id="status" class="form-control" required>
+                        <option value="1" {{ $driver->status == 1 ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{ $driver->status == 0 ? 'selected' : '' }}>Inactive</option>
+                    </select>
+                    
+                </div>
+            </div>
             <!-- Add more fields as needed -->
         
             <div class="form-group">

@@ -1,7 +1,7 @@
 <!-- resources/views/drivers/index.blade.php -->
 
 @extends('admin.dashboard')
-@section('title', 'driver')
+@section('title', 'regions')
 
 @section('content')
 <br>
@@ -18,9 +18,9 @@
                         <div class="card">
                            
                             <div class="card-header">
-                                <a href="{{ route('drivers.create') }}" class="btn btn-primary float-right">Add Driver</a>
-                            <h2>Drivers</h2>
-                            
+                                <a href="{{ route('regions.create') }}" class="btn btn-primary float-right">Add Region</a>
+                            <h2>Region List</h2>
+                      
                                     <hr>
                             @if (session('success'))
                                 <div class="alert alert-success mt-3">
@@ -31,28 +31,25 @@
                             <table class="table mt-3">
                                 <thead class="text-primary">
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Gender</th>
-                                        <th>License Number</th>
-                                        <th>Contact Number</th>
+                                        <th>SN</th>
+                                        <th>Region Name</th>
+                                        <th>Region Code</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($drivers as $driver)
+                                    @foreach ($regions as $region)
                                         <tr>
-                                            <td>{{ $driver->id }}</td>
-                                            <td>{{ $driver->name }}</td>
-                                            <td>{{ $driver->gender }}</td>
-                                            <td>{{ $driver->license_number }}</td>
-                                            <td>{{ $driver->contact_number }}</td>
-                                            <td>{{ $driver->status ? 'Active' : 'Inactive' }}</td>
+                                            <td>{{ $region->id }}</td>
+                                            <td>{{ $region->region_name }}</td>
+                                            <td>{{ $region->region_code }}</td>
+                                            <td>{{ $region->status ? 'Active' : 'Inactive' }}</td>
+    
                                             <td>
                                                 
-                                                <a href="{{ route('drivers.edit', $driver->id) }}" class="btn btn-warning">Edit</a>
-                                                <form action="{{ route('drivers.destroy', $driver->id) }}" method="POST" style="display:inline">
+                                                <a href="{{ route('regions.edit', $region->id) }}" class="btn btn-warning">Edit</a>
+                                                <form action="{{ route('regions.destroy', $region->id) }}" method="POST" style="display:inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

@@ -13,15 +13,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <span class="pull-center">
-                            <a href="{{ route('buses.create') }}" class="btn btn-sm btn-primary float-right" >
-                                <i class="glyphicon glyphicon-plus"></i> Add New Bus
-                            </a>
-                        </span>
+                       
                         <br>
                         <br>
                         <div class="card">
                             <div class="card-header card-header-primary">
+                                <span class="pull-center">
+                                    <a href="{{ route('buses.create') }}" class="btn btn-sm btn-primary float-right" >
+                                        <i class="glyphicon glyphicon-plus"></i> Add New Bus
+                                    </a>
+                                </span>
                                 <h4 class="card-title">Number OF Buses</h4>
                                
                             </div>

@@ -37,10 +37,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('drivers.index')}}" class="nav-link">
+                    <a href="{{route('user.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                          Driver
+                            User
                         </p>
                     </a>
                 </li>
@@ -54,6 +54,17 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{route('drivers.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                          Driver
+                        </p>
+                    </a>
+                </li>
+
+              
+
 
                 <li class="nav-item">
                     <a href="{{route('buses.index')}}" class="nav-link">
@@ -65,13 +76,19 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('user.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            User
-                        </p>
+                    <a href="{{ route('regions.index') }}" class="nav-link">
+                        <i class="fas fa-globe"></i>
+                        <p>Regions</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('sub_regions.index') }}" class="nav-link">
+                        <i class="fas fa-map-marker"></i>
+                        <p>Sub Regions</p>
+                    </a>
+                </li>
+
+                
 
                 
 
@@ -96,6 +113,6 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-</
+
 
 

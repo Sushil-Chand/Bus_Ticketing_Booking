@@ -18,4 +18,11 @@ class Sub_region extends Model
         'status',
     ];
 
+    // Region model
+public function region()
+{
+    return $this->belongsTo(Region::class, 'region_id', 'id');
+}
+
+
 }
