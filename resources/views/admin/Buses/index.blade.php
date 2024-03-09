@@ -3,13 +3,10 @@
 @section('title', 'Bus Index')
 
 @section('content')
-<br>
-<br>
-
     <div class="content-wrapper">
         <div class="content">
             <br>
-            <br>
+          
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -19,11 +16,11 @@
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <span class="pull-center">
-                                    <a href="{{ route('buses.create') }}" class="btn btn-sm btn-primary float-right" >
+                                    <a href="{{ route('buses.create') }}" class="btn btn-ls btn-primary float-right" >
                                         <i class="glyphicon glyphicon-plus"></i> Add New Bus
                                     </a>
                                 </span>
-                                <h4 class="card-title">Number OF Buses</h4>
+                                <h3>Number of Buses</h3>
                                
                             </div>
                             <div class="card-body">

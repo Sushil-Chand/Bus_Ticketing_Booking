@@ -35,6 +35,8 @@
                                         <th>Region Name</th>
                                         <th>Sub Region Name</th>
                                         <th> Sub Region Code</th>
+                                        <th>Travel Time </th>
+                                        <th>Travel Distance(KM)</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -42,13 +44,17 @@
                                 <tbody>
                                     @foreach ($sub_region as $regions)
                                         <tr>
-                                            <td>{{ $regions->id }}</td>
+                                            <td>{{ $loop->iteration}}</td>
                                             <td>{{ $regions->region->region_name}}</td>
 
                                             <td>{{ $regions->sub_region_name }}</td>
 
 
                                             <td>{{ $regions->sub_region_code }}</td>
+                                            <td>{{ ($regions->travel_time) }}</td>
+                                            <td>{{ $regions->distance }} km</td>
+                                            
+
                                             <td>{{ $regions->status ? 'Active' : 'Inactive' }}</td>
     
                                             <td>

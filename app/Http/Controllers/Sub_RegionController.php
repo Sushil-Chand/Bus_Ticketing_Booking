@@ -38,6 +38,8 @@ class Sub_RegionController extends Controller
             'region_id' => 'required',
             'sub_region_name' => 'required',
             'sub_region_code'=>'required',
+            'travel_time'=>'required',
+            'distance'=>'required',
             'status' => 'boolean',
         ]);
 
@@ -74,6 +76,8 @@ class Sub_RegionController extends Controller
             'region_id' => 'required',
             'sub_region_name' => 'required',
             'sub_region_code'=>'required',
+            'travel_time'=>'required',
+            'distance'=>'required',
             'status' => 'boolean',
         ]);
        

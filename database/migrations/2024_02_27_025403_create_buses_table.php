@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('bus_name');
             $table->string('bus_code');
             $table->string('type');
+            $table->string('amenities');
             $table->foreignId('operator_id')->constrained('operators','id');
             $table->integer('total_seats');
             $table->foreignId('user_id')->constrained('users','id')->nullable();
@@ -29,7 +30,9 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
         Schema::dropIfExists('buses');
     }
+
+    
 };

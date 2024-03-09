@@ -15,6 +15,8 @@ class Sub_region extends Model
         'sub_region_name',
         'sub_region_code',
         'region_id',
+        'travel_time',
+        'distance',
         'status',
     ];
 

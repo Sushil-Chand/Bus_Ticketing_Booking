@@ -29,7 +29,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Region Name:</label>
                                 <select name="region_id" id="region_id" class="form-control" required>
@@ -41,12 +41,19 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="col-md-6">
+                    
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="sub_region_name">Sub Region Name</label>
                                 <input name="sub_region_name" class="form-control" placeholder="Enter Sub Region Name"
                                        type="text" value="{{ $sub_region->sub_region_name }}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="travel_time">Travel Time</label>
+                                <input name="travel_time" class="form-control" value="{{ $sub_region->travel_time }}" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -58,8 +65,15 @@
                                        type="text" value="{{ $sub_region->sub_region_code }}" required>
                             </div>
                         </div>
-                    </div>
+                
 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="distance">Distance(KM)</label>
+                            <input name="distance" class="form-control" value="{{ $sub_region->distance }}" type="number" required>
+                        </div>
+                    </div>
+                    </div>
                     <div class="row">
 
                         <div class="col-md-2">

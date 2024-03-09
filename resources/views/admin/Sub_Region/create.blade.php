@@ -32,7 +32,7 @@
                     @csrf
                     @method('POST')
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Region Name:</label>
                                 <select name="region_id" id="region_id" class="form-control" required>
@@ -43,19 +43,36 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="sub_region_name">Sub Region Name</label>
                                 <input name="sub_region_name" class="form-control" placeholder="Enter Sub Region  Name" type="text" required>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="travel_time">Travel Time</label>
+                                <input name="travel_time" class="form-control" placeholder="Enter travel time (HH:MM)" type="text" step="0.01" required>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sub_region_code">Region Code</label>
                                 <input name="sub_region_code" class="form-control" placeholder="Enter Region Code" type="text" required>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="distance">Distance(KM)</label>
+                                <input name="distance" class="form-control" placeholder="Enter Distance Distination" type="number" required>
+                            </div>
+                        </div>
+                    </div>
+                    
                     
 
                     <div class="form-group">

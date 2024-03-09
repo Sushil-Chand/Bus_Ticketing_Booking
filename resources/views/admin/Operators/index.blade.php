@@ -2,8 +2,7 @@
 @section('title', 'Operator Index')
 
 @section('content')
-<br>
-<br>
+
 
 
 <style>
@@ -17,7 +16,7 @@
     <div class="content-wrapper">
         <div class="content">
             <br>
-            <br>
+            
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -27,12 +26,12 @@
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <span class="pull-center">
-                                    <a href="{{ route('operators.create') }}" class="btn btn-sm btn-primary float-right">
+                                    <a href="{{ route('operators.create') }}" class="btn btn-ls btn-primary float-right">
                                         <i class="glyphicon glyphicon-plus"></i> Add New Operator
                                     </a>
                                 </span>
-                                <h4 class="card-title">Operators List</h4>
-                                <p class="card-category">Operators is here</p>
+                                <h2 class="card-title">Operators List</h2>
+                              
                             </div>
                             <div class="card-body">
                                 @if(count($operators) > 0)

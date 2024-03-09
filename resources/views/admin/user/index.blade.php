@@ -30,7 +30,6 @@
         <br>
         <br>
         <br>
-        <br>
         
   
 
@@ -42,7 +41,7 @@
                            
                             <div class="card-header">
                                
-                                <h2 class=" text-primary px-4 m-2 float-left">User List</h2>
+                                <h2 >User List of system Register</h2>
                             </div>
                             <div class="card-body table-responsive p-2">
                                 <table class="table mt-3">
