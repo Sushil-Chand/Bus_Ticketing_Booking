@@ -34,7 +34,7 @@
                                             <th>Operator</th>
                                             <th>Total Seats</th>
                                             <th>Driver</th>
-                                            {{-- <th>User</th> --}}
+                                            <th>Amenities</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
@@ -49,7 +49,7 @@
                                                     <td>{{ $bus->operator->name }}</td>
                                                     <td>{{ $bus->total_seats }}</td>
                                                     <td>{{ $bus->driver->name }}</td>
-                                                    {{-- <td>{{ $bus->user->name }}</td> --}}
+                                                    <td>{{ $bus->amenities }}</td>
                                                     <td>{{ $bus->status ? 'Active' : 'Inactive' }}</td>
                                                     <td>{{ $bus->created_at }}</td>
                                                     <td>

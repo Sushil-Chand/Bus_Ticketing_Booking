@@ -49,6 +49,7 @@ class BusController extends Controller
         'type' => 'required|string',
         'operator_id' => 'required|exists:operators,id',
         'total_seats' => 'required|integer',
+        'amenities'=>'required',
         // 'user_id' => 'required|exists:users,id',
         'driver_id' => 'required|exists:drivers,id',
         'status' => 'required|boolean',
@@ -95,6 +96,7 @@ class BusController extends Controller
             'operator_id' => 'required|exists:operators,id',
             'total_seats' => 'required|integer',
             // 'user_id' => 'required|exists:users,id',
+            'amenities'=>'required',
             'driver_id' => 'required|exists:drivers,id',
             'status' => 'required|boolean',
         ]);

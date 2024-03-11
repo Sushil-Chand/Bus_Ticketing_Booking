@@ -35,6 +35,21 @@ class UserController extends Controller
 
         }
 
+        public function search(Request $request)
+        {
+            $query = $request->input('search');
+    
+            // Perform the search query on the User model
+            $users = User::where('name', 'LIKE', '%' . $query . '%')
+                ->orWhere('email', 'LIKE', '%' . $query . '%')
+                ->orWhere('contactno', 'LIKE', '%' . $query . '%')
+                ->orWhere('address', 'LIKE', '%' . $query . '%')
+                ->paginate(10); // You can adjust the pagination as needed
+    
+            // Return the view with the search results
+            return view('admin.User.index', compact('users'));
+        }
+
     }
 
 

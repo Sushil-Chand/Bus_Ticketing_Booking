@@ -48,6 +48,7 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__ . '/web/buses.php';
     require __DIR__. '/web/region.php';
     require __DIR__. '/web/sub_region.php';
+    require __DIR__. '/web/bus_schedule.php';
     
 });
 

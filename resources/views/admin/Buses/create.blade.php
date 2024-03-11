@@ -89,13 +89,20 @@
 
                                     
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Status:</label>
                                             <select name="status" id="status" class="form-control" required>
                                                 <option value="1">Active</option>
                                                 <option value="0">Inactive</option>
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+                                            <label class="bmd-label-floating">Amenities:</label>
+                                            <input type="text" name="amenities" id="amenities"  placeholder=" Bus Amenities" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>

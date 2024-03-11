@@ -62,7 +62,8 @@
 
                             <div class="form-group">
                                 <label for="contact_number">Contact Number:</label>
-                                <input type="text" name="contact_number" id="contact_number" placeholder="Enter contact number" class="form-control" required>
+                                <input type="text" name="contact_number" id="contact_number" placeholder="Enter contact number" class="form-control" pattern="\d+" title="Please enter a positive number" inputmode="numeric" required>
+
                             </div>
 
                             <div class="form-group">

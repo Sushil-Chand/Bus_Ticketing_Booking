@@ -48,10 +48,10 @@ class BusScheduleController extends Controller
                 'depart_date' => 'required|date',
                 'return_date' => 'required|date',
                 'depart_time' => 'required|date_format:H:i',
-                'return_time' => 'required|date_format:H:i',
+                'return_time' => 'date_format:H:i',
                 'pickup_address' => 'required',
                 'dropoff_address' => 'required',
-                'fare_amount' => 'required|numeric',
+                'fare_amount' => 'required',
                 'status' => 'boolean',
             ]);
 
