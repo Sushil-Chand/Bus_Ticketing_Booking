@@ -56,6 +56,7 @@ class BusScheduleController extends Controller
             ]);
 
             Bus_Schedule::create($request->all());
+            dd('Bus_Schedule');
 
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule created successfully');
         } catch (Exception $e) {

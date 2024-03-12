@@ -84,7 +84,7 @@
                         @endforeach
                     </select>
                 </div>
-                
+
                 <div class="form-group col-md-3">
                     <label for="fare_amount">Fare Amount</label>
                     <input type="number" class="form-control" id="fare_amount" name="fare_amount" required>
@@ -92,6 +92,21 @@
 
                 
                 </div>
+                <div class="form-row">
+
+                    
+                    <div class="form-group col-md-3">
+                        <label for="pickup_address">Drop of address</label>
+                        <input type="text" class="form-control" id="pickup_address" name="pickup_address" required>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="dropoff_address">Pick of address</label>
+                        <input type="text" class="form-control" id="dropoff_address" name="dropoff_address" required>
+                    </div>
+
+                </div>
+
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="return_date">Return Date</label>
