@@ -54,7 +54,7 @@
                                             <th>Created At</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="userData">
                                         @forelse ($users as $user)
                                             <tr>
                                                 <td>{{ $user->id }}</td>
@@ -118,7 +118,31 @@
     });
 </script>
 
+<script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+        let input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        table = document.querySelector('.table');
+        tr = table.getElementsByTagName('tr');
 
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td');
+            for (let j = 0; j < td.length; j++) {
+                let cell = td[j];
+                if (cell) {
+                    txtValue = cell.textContent || cell.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                        break;
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    });
+</script>
 
 
 @endsection

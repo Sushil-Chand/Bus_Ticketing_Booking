@@ -33,6 +33,7 @@ class BusController extends Controller
         // $users = User::all();
 
         return view('admin.Buses.create', compact('operators', 'drivers'));
+
     }
 
     /**
@@ -59,7 +60,8 @@ class BusController extends Controller
     // dd($busData); // Output the data to check if it's correct
     
     Bus::create($busData);
-   
+   toast('Your Post as been submited!','error');
+
     return redirect(route('buses.index'))->with('success', 'Bus created successfully.');
 }
 
