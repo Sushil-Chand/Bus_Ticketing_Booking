@@ -18,9 +18,9 @@ return new class extends Migration
         $table->foreignId('region_id')->constrained();
         $table->foreignId('sub_region_id')->constrained();
         $table->date('depart_date');
-        $table->date('return_date');
+        $table->date('return_date')->nullable();
         $table->dateTimeTz('depart_time');
-        $table->dateTimeTz('return_time');
+        $table->dateTimeTz('return_time')->nullable();;
         $table->string('pickup_address');
         $table->string('dropoff_address');
         $table->decimal('fare_amount', 10, 2); // Change the precision and scale as needed

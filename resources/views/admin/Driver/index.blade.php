@@ -43,7 +43,7 @@
                                 <tbody>
                                     @foreach ($drivers as $driver)
                                         <tr>
-                                            <td>{{ $driver->id }}</td>
+                                            <td>{{ $loop->iteration}}</td>
                                             <td>{{ $driver->name }}</td>
                                             <td>{{ $driver->gender }}</td>
                                             <td>{{ $driver->license_number }}</td>

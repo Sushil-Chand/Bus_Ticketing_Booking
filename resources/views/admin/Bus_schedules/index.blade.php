@@ -27,32 +27,41 @@
                              
                                     <table class="table">
                                         <thead class="text-primary">
+                                            <th>S.N</th>
                                             <th>Bus Name</th>
                                             <th>Operator Name</th>
+                                            <th>City</th>
+                                            <th>Destination</th>
                                             <th>Departure Date</th>
                                             <th>Departure Time</th>
-                                            <th>Return Date</th>
-                                            <th>Return Time</th>
+                                            {{-- <th>Return Date</th>
+                                            <th>Return Time</th> --}}
+                                            <th>Pick</th>
+                                            <th>Drop</th>
                                             <th>Fare Amount</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </thead>
-                                        {{-- <tbody>
-                                            @foreach($buses as $bus)
+                                        <tbody>
+                                            @foreach($busSchedules as $schedule)
                                                 <tr>
-                                                    <td>{{ $bus->id }}</td>
-                                                    <td>{{ $bus->bus_name }}</td>
-                                                    <td>{{ $bus->bus_code }}</td>
-                                                    <td>{{ $bus->type }}</td>
-                                                    <td>{{ $bus->operator->name }}</td>
-                                                    <td>{{ $bus->total_seats }}</td>
-                                                    <td>{{ $bus->driver->name }}</td>
-                                                    <td>{{ $bus->amenities }}</td>
-                                                    <td>{{ $bus->status ? 'Active' : 'Inactive' }}</td>
-                                                    <td>{{ $bus->created_at }}</td>
+                                                    <td>{{ $loop->iteration}}</td>
+                                                    <td>{{ $schedule->bus_id }}</td>
+                                                    <td>{{ $schedule->operator_id }}</td>
+                                                    <td>{{ $schedule->region_id }}</td>
+                                                    <td>{{ $schedule->sub_region_id }}</td>
+                                                    <td>{{ $schedule->depart_date }}</td>
+                                                    <td>{{ $schedule->depart_time }}</td>
+                                                    {{-- <td>{{ $schedule->return_date }}</td>
+                                                    <td>{{ $schedule->return_time }}</td> --}}
+                                                    <td>{{ $schedule->pickup_address }}</td>
+                                                    <td>{{ $schedule->dropoff_address }}</td>
+                                                    <td>Rs. {{ $schedule->fare_amount }}</td>
+                                                    <td>{{ $schedule->status ? 'Active' : 'Inactive' }}</td>
+                                                 
                                                     <td>
-                                                        <a href="{{ route('buses.edit', $bus->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                                        <form action="{{ route('buses.destroy', $bus->id) }}" method="POST" style="display:inline">
+                                                        <a href="{{ route('bus_schedules.edit', $schedule->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                                        <form action="{{ route('bus_schedules.destroy', $schedule->id) }}" method="POST" style="display:inline">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
@@ -60,7 +69,7 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        </tbody> --}}
+                                        </tbody>
                                     </table>
                              
                             </div>

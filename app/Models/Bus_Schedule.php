@@ -32,17 +32,17 @@ class Bus_Schedule extends Model
 
     // Define relationships with other models
 
-    public function bus()
+    public function Bus()
     {
         return $this->belongsTo(Bus::class, 'bus_id');
     }
 
-    public function operator()
+    public function Operator()
     {
         return $this->belongsTo(Operator::class, 'operator_id');
     }
 
-    public function region()
+    public function Region()
     {
         return $this->belongsTo(Region::class, 'region_id');
     }

@@ -51,9 +51,9 @@
                                         <tbody>
                                         @foreach($operators as $data)
                                             <tr>
-                                                <td>{{ $data->id }}</td>
+                                                <td>{{ $loop->iteration}}</td>
                                                 <td>
-                                                  {{ $data->name }}</a>
+                                                  {{ $data->name }}
                                                 </td>
                                                 <td>{{ $data->email }}</td>
                                                 <td>{{ $data->phone }}</td>

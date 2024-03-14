@@ -41,7 +41,7 @@
                                 <tbody>
                                     @foreach ($regions as $region)
                                         <tr>
-                                            <td>{{ $region->id }}</td>
+                                            <td>{{ $loop->iteration}}</td>
                                             <td>{{ $region->region_name }}</td>
                                             <td>{{ $region->region_code }}</td>
                                             <td>{{ $region->status ? 'Active' : 'Inactive' }}</td>

@@ -15,54 +15,55 @@ class BusScheduleController extends Controller
 {
     public function index()
     {
-        try {
+
             $busSchedules = Bus_Schedule::all();
+        
             return view('admin.Bus_schedules.index', compact('busSchedules'));
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+      
     }
 
     public function create()
     {
-        try {
+        
             $buses = Bus::all();
             $operators = Operator::all();
             $regions = Region::all();
             $subRegions = Sub_region::all();
 
             return view('admin.Bus_schedules.create', compact('buses', 'operators', 'regions', 'subRegions'));
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+       
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'bus_id' => 'required',
+            'operator_id' => 'required',
+            'region_id' => 'required',
+            'sub_region_id' => 'required',
+            'depart_date' => 'required|date',
+            'depart_time' => 'required',
+            'pickup_address' => 'required',
+            'dropoff_address' => 'required',
+            'fare_amount' => 'required',
+            'status' => 'boolean',
+        ]);
+    
         try {
-            $request->validate([
-                'bus_id' => 'required',
-                'operator_id' => 'required',
-                'region_id' => 'required',
-                'sub_region_id' => 'required',
-                'depart_date' => 'required|date',
-                'return_date' => 'required|date',
-                'depart_time' => 'required|date_format:H:i',
-                'return_time' => 'date_format:H:i',
-                'pickup_address' => 'required',
-                'dropoff_address' => 'required',
-                'fare_amount' => 'required',
-                'status' => 'boolean',
-            ]);
-
-            Bus_Schedule::create($request->all());
-            dd('Bus_Schedule');
-
+            $scheduleData = $request->all();
+            $scheduleData['depart_time'] = $scheduleData['depart_date'] . ' ' . $scheduleData['depart_time'];
+            // Concatenate depart_date and depart_time to form a datetime value
+    
+            Bus_Schedule::create($scheduleData);
+    
+            toast('Success', 'success');
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule created successfully');
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            toast('Error: ' . $e->getMessage(), 'error');
+            return back()->withInput();
         }
     }
+    
 
     public function edit($id)
     {
@@ -73,7 +74,7 @@ class BusScheduleController extends Controller
             $regions = Region::all();
             $subRegions = Sub_region::all();
 
-            return view('bus_schedules.edit', compact('busSchedule', 'buses', 'operators', 'regions', 'subRegions'));
+            return view('admin.bus_schedules.edit', compact('busSchedule', 'buses', 'operators', 'regions', 'subRegions'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
         } catch (Exception $e) {
