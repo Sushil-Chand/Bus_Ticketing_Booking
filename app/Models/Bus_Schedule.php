@@ -25,10 +25,10 @@ class Bus_Schedule extends Model
         'status',
     ];
 
-    protected $casts = [
-        'depart_time' => 'datetime:Y-m-d H:i:sP',
-        'return_time' => 'datetime:Y-m-d H:i:sP',
-    ];
+    // protected $casts = [
+    //     'depart_time' => 'datetime:Y-m-d H:i:sP',
+    //     'return_time' => 'datetime:Y-m-d H:i:sP',
+    // ];
 
     // Define relationships with other models
 
@@ -42,7 +42,7 @@ class Bus_Schedule extends Model
         return $this->belongsTo(Operator::class, 'operator_id');
     }
 
-    public function Region()
+    public function region()
     {
         return $this->belongsTo(Region::class, 'region_id');
     }

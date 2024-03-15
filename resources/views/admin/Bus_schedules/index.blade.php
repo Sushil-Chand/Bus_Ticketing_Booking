@@ -47,7 +47,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration}}</td>
                                                     <td>{{ $schedule->bus_id }}</td>
-                                                    <td>{{ $schedule->operator_id }}</td>
+                                                    <td >{{ $schedule->$region->region_name }}</td>
                                                     <td>{{ $schedule->region_id }}</td>
                                                     <td>{{ $schedule->sub_region_id }}</td>
                                                     <td>{{ $schedule->depart_date }}</td>
