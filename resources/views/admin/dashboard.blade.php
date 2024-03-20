@@ -1,4 +1,4 @@
-@extends('admin.include.main')
+@extends('admin.include.main')  
 @section('title', 'Dashboard')
 @section('content')
 
