@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
   @include('Frontend.include.head')
  
@@ -15,7 +15,6 @@
 
       <!-- Main sidebar -->
       {{-- @include('Frontend.include.sidebar') --}}
-
       <!-- Main content -->
       <section class="content">
         {{-- @include('sweetalert::alert') --}}
@@ -23,6 +22,10 @@
       
       </section>
       <!-- /.content -->
+    
+
+
+
 
       <!-- Main Footer -->
       @include('Frontend.include.footer')

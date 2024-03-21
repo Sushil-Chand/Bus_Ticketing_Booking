@@ -3,9 +3,10 @@
     
     <br>
     <!-- Brand Logo -->
-    <a href="/admin-dashboard" class="brand-link">
-        <img src="admin/img/buslogo.png" alt="admin bus logo" class="brand-image"
+    <a href="admin-dashboard" class="brand-link">
+        <img src="{{ asset('admin/img/buslogo.png') }}" alt="admin bus logo" class="brand-image"
             style="opacity: .8">
+            
         <span class="brand-text font-weight-light">Admin-System</span>
     </a>
 

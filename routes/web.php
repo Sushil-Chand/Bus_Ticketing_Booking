@@ -1,8 +1,9 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
 use App\Enums\UserType;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__. '/web/bus_schedule.php';
     
 });
+
+Route::get('/sushil', [UserController::class, 'try'])->name('try');
 
 
 

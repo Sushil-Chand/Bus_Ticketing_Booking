@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function home()
-    {
+    {   dd('ram');
         return view('user.home');
+
+    }
+
+    public function try()
+    {   
+        return view('try.sushil');
+
     }
 
     public function userindex()

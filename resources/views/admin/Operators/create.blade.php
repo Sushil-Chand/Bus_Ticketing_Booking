@@ -1,6 +1,7 @@
 <!-- resources/views/admin/Operators/create.blade.php -->
 
 @extends('admin.dashboard')
+
 @section('title', 'Create Operator')
 
 @section('content')
