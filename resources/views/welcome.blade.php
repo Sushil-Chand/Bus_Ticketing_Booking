@@ -3,7 +3,7 @@
 
 @section('content')
 
-<a href="{{ route('try') }}">sushil</a>
+
 <h1>Hello</h1>
 	
 @endsection

@@ -47,7 +47,7 @@ class Bus_Schedule extends Model
         return $this->belongsTo(Region::class, 'region_id');
     }
 
-    public function subRegion()
+    public function Sub_region()
     {
         return $this->belongsTo(Sub_region::class, 'sub_region_id');
     }

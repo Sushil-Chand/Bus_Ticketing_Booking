@@ -34,8 +34,8 @@
                                             <th>Destination</th>
                                             <th>Departure Date</th>
                                             <th>Departure Time</th>
-                                            {{-- <th>Return Date</th>
-                                            <th>Return Time</th> --}}
+                                            <th>Return Date</th>
+                                            <th>Return Time</th>
                                             <th>Pick</th>
                                             <th>Drop</th>
                                             <th>Fare Amount</th>
@@ -46,14 +46,15 @@
                                             @foreach($busSchedules as $schedule)
                                                 <tr>
                                                     <td>{{ $loop->iteration}}</td>
-                                                    <td>{{ $schedule->bus_id }}</td>
-                                                    <td >{{ $schedule->$region->region_name }}</td>
-                                                    <td>{{ $schedule->region_id }}</td>
-                                                    <td>{{ $schedule->sub_region_id }}</td>
+                                                    <td>{{ $schedule->Bus->bus_name }}</td>
+                                                    
+                                                    <td >{{ $schedule->Operator->name }}</td>
+                                                    <td>{{ $schedule->Region->region_name }}</td>
+                                                    <td>{{ $schedule->Sub_region->sub_region_name }}</td>
                                                     <td>{{ $schedule->depart_date }}</td>
                                                     <td>{{ $schedule->depart_time }}</td>
-                                                    {{-- <td>{{ $schedule->return_date }}</td>
-                                                    <td>{{ $schedule->return_time }}</td> --}}
+                                                    <td>{{ $schedule->return_date }}</td>
+                                                    <td>{{ $schedule->return_time }}</td>
                                                     <td>{{ $schedule->pickup_address }}</td>
                                                     <td>{{ $schedule->dropoff_address }}</td>
                                                     <td>Rs. {{ $schedule->fare_amount }}</td>

@@ -73,19 +73,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="depart_date">Departure Date</label>
-                        <input type="date" class="form-control" id="depart_date" name="depart_date" value="{{ $busSchedule->depart_date }}" required>
+                        <input type="date" class="form-control" id="depart_date" name="depart_date" value="{{ $busSchedule->depart_date }}">
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="depart_time">Departure Time</label>
-                        <input type="time" class="form-control" id="depart_time" name="depart_time" value="{{ $busSchedule->depart_time }}" required>
+                        <input type="time" class="form-control" id="depart_time" name="depart_time" value="{{ $busSchedule->depart_time }}">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="fare_amount">Fare Amount</label>
-                        <input type="number" class="form-control" id="fare_amount" name="fare_amount" value="{{ $busSchedule->fare_amount }}" required>
+                        <input type="number" class="form-control" id="fare_amount" name="fare_amount" value="{{ $busSchedule->fare_amount }}">
                     </div>
 
                     <div class="form-group col-md-3">
@@ -93,7 +93,7 @@
                         <input type="text" class="form
                         <div class="form-group col-md-3">
                             <label for="dropoff_address">Dropoff Address</label>
-                            <input type="text" class="form-control" id="dropoff_address" name="dropoff_address" value="{{ $busSchedule->dropoff_address }}" required>
+                            <input type="text" class="form-control" id="dropoff_address" name="dropoff_address" value="{{ $busSchedule->dropoff_address }}">
                         </div>
                     </div>
         

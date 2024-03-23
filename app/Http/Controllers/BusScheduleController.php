@@ -78,7 +78,8 @@ class BusScheduleController extends Controller
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            toast('Error: ' . $e->getMessage(), 'error');
+            
         }
     }
 
@@ -91,9 +92,9 @@ class BusScheduleController extends Controller
                 'region_id' => 'required',
                 'sub_region_id' => 'required',
                 'depart_date' => 'required|date',
-                'return_date' => 'required|date',
+                
                 'depart_time' => 'required|date_format:H:i',
-                'return_time' => 'required|date_format:H:i',
+                
                 'pickup_address' => 'required',
                 'dropoff_address' => 'required',
                 'fare_amount' => 'required|numeric',
@@ -106,8 +107,9 @@ class BusScheduleController extends Controller
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule updated successfully');
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
+            toast('Error: ' . $e->getMessage(), 'error');
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            toast('Error: ' . $e->getMessage(), 'error');
         }
     }
 
