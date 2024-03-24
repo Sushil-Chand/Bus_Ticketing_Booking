@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        {{-- <div class="content"> --}}
+        <div class="content">
             <br>
           
             <div class="container-fluid">
@@ -47,14 +47,13 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration}}</td>
                                                     <td>{{ $schedule->Bus->bus_name }}</td>
-                                                    
                                                     <td >{{ $schedule->Operator->name }}</td>
                                                     <td>{{ $schedule->Region->region_name }}</td>
                                                     <td>{{ $schedule->Sub_region->sub_region_name }}</td>
                                                     <td>{{ $schedule->depart_date }}</td>
                                                     <td>{{ $schedule->depart_time }}</td>
-                                                    <td>{{ $schedule->return_date }}</td>
-                                                    <td>{{ $schedule->return_time }}</td>
+                                                    <td>{{ $schedule->return_date }} null</td>
+                                                    <td>{{ $schedule->return_time }}null</td>
                                                     <td>{{ $schedule->pickup_address }}</td>
                                                     <td>{{ $schedule->dropoff_address }}</td>
                                                     <td>Rs. {{ $schedule->fare_amount }}</td>

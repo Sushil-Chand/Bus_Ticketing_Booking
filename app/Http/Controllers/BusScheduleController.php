@@ -92,9 +92,9 @@ class BusScheduleController extends Controller
                 'region_id' => 'required',
                 'sub_region_id' => 'required',
                 'depart_date' => 'required|date',
-                
+                'return_date' => 'required|date',
                 'depart_time' => 'required|date_format:H:i',
-                
+                'return_time' => 'required|date_format:H:i',
                 'pickup_address' => 'required',
                 'dropoff_address' => 'required',
                 'fare_amount' => 'required|numeric',

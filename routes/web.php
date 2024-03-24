@@ -53,7 +53,7 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     
 });
 
-Route::get('/sushil', [UserController::class, 'try'])->name('try');
+
 
 
 

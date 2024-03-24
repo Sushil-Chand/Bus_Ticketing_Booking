@@ -22,7 +22,7 @@
 
             <form method="POST" action="{{ route('bus_schedules.update', $busSchedule->id) }}">
                 @csrf
-                @method('PUT')
+                @method('put')
 
                 <div class="form-row">
                     <div class="form-group col-md-3">
@@ -90,7 +90,8 @@
 
                     <div class="form-group col-md-3">
                         <label for="pickup_address">Pickup Address</label>
-                        <input type="text" class="form
+                        <input type="text" class="form">
+                    </div>
                         <div class="form-group col-md-3">
                             <label for="dropoff_address">Dropoff Address</label>
                             <input type="text" class="form-control" id="dropoff_address" name="dropoff_address" value="{{ $busSchedule->dropoff_address }}">

@@ -1,47 +1,84 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-        <div class="nav navbar-nav navbar-right">
-            @if (Route::has('login'))
-            <div class="glyphicon glyphicon-log-in">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="glyphicon glyphicon-log-in">Login</a>
+ <!--header-top start -->
+ <header id="header-top" class="header-top">
+  <ul>
+      <li>
+          <div class="header-top-left">
+              <ul>
+                  <li class="select-opt">
+                      <select name="language" id="language">
+                          <option value="default">EN</option>
+                          <option value="Bangla">BN</option>
+                          <option value="Arabic">AB</option>
+                      </select>
+                  </li>
+                  <li class="select-opt">
+                      <select name="currency" id="currency">
+                          <option value="usd">USD</option>
+                          <option value="euro">Euro</option>
+                          <option value="bdt">BDT</option>
+                      </select>
+                  </li>
+                  <li class="select-opt">
+                      <a href="#"><span class="lnr lnr-magnifier"></span></a>
+                  </li>
+              </ul>
+          </div>
+      </li>
+      <li class="head-responsive-right pull-right">
+          <div class="header-top-right">
+              <ul>
+                  <li class="header-top-contact">
+                      +1 222 777 6565
+                  </li>
+                  <li class="header-top-contact">
+                      <a href="#">sign in</a>
+                  </li>
+                  <li class="header-top-contact">
+                      <a href="#">register</a>
+                  </li>
+              </ul>
+          </div>
+      </li>
+  </ul>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="glyphicon glyphicon-user">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-        </div>
-      </div>
-    </div>
-  </nav>
+</header><!--/.header-top-->
+<!--header-top end -->
+
+<!-- top-area Start -->
+<section class="top-area">
+  <div class="header-area">
+      <!-- Start Navigation -->
+      <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70"
+          data-minus-value-mobile="55" data-speed="1000">
+
+          <div class="container">
+
+              <!-- Start Header Navigation -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                      <i class="fa fa-bars"></i>
+                  </button>
+                  <a class="navbar-brand" href="index.html">list<span>race</span></a>
+
+              </div><!--/.navbar-header-->
+              <!-- End Header Navigation -->
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                  <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                      <li class=" scroll active"><a href="#home">home</a></li>
+                      <li class="scroll"><a href="#works">how it works</a></li>
+                      <li class="scroll"><a href="#explore">explore</a></li>
+                      <li class="scroll"><a href="#reviews">review</a></li>
+                      <li class="scroll"><a href="#blog">blog</a></li>
+                      <li class="scroll"><a href="#contact">contact</a></li>
+                  </ul><!--/.nav -->
+              </div><!-- /.navbar-collapse -->
+          </div><!--/.container-->
+      </nav><!--/nav-->
+      <!-- End Navigation -->
+  </div><!--/.header-area-->
+  <div class="clearfix"></div>
+
+</section><!-- /.top-area-->
+<!-- top-area End -->
