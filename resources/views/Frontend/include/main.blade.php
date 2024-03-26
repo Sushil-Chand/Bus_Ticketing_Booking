@@ -20,7 +20,7 @@
         {{-- @include('sweetalert::alert') --}}
         @yield('content')
       
-
+	  </section>
       <!--welcome-hero start -->
 		<section id="home" class="welcome-hero">
 			<div class="container">
@@ -930,15 +930,14 @@
 
 		</section><!--/subscription-->	
 		<!--subscription end -->  
-      </section>
+    
       
 
       <!-- /.content -->
     
-
-
-
-
+			
+			
+			
       <!-- Main Footer -->
       @include('Frontend.include.footer')
 

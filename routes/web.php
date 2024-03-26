@@ -1,9 +1,8 @@
 <?php
 
-
-use App\Enums\UserType;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Enums\UserType;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,15 +34,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::middleware(['    ', 'userType:' . UserType::User])->group(function () {
+Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
     require __DIR__ . '/web/user.php';
-   
     
 });
 
+
 Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__ . '/web/admin.php'; // admin route group
-    require __DIR__ . '/web/adminuser.php';
+ 
     require __DIR__ . '/web/driver.php';
     require __DIR__ . '/web/operator.php';
     require __DIR__ . '/web/buses.php';
@@ -53,7 +52,7 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     
 });
 
-
+;
 
 
 

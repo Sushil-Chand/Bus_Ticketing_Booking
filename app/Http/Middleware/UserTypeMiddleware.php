@@ -20,10 +20,10 @@ class UserTypeMiddleware
         // Redirect based on user type
         switch ($user->usertype) {
             case UserType::User:
-                return redirect()->route('dashboard');
+                return redirect()->route('user.dashboard');
                 break;
             case UserType::Admin:
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.home');
                 break;
                 
             default:
