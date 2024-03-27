@@ -2,7 +2,12 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
+          
         </h2>
+        
+        <button onclick="history.back()" class="btn btn-primary">
+            <i class="fa fa-arrow-left"></i> <span>Back</span>
+        </button>
     </x-slot>
 
     <div class="py-12">
