@@ -22,23 +22,24 @@
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         
         
-                        <li class=" scroll active"><a href="#home">home</a></li>
+                        <li class=" scroll active"><a href="{{route('mainhome')}}">home</a></li>
                       
                         <li class="scroll"><a href="#blog">About</a></li>
                         <li class="scroll"><a href="#contact">contact</a></li>
                         @if(auth()->check()) <!-- Check if user is authenticated -->
                         <li class="nav-item dropdown position-static">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: larger;">
                                 {{ auth()->user()->name }}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">Logout</button>
-                                    </form>
+                                    <div class="d-flex flex-column">
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">Logout</button>
+                                        </form>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -50,28 +51,6 @@
                                 <li class="#"><a href="{{ route('register') }}">Register</a></li>
                             @endif
 
-                                
-                      
-                
-                       
-
-                        {{--)
-                        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                            @else
-                                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-        
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                     
-                       
-                        
-                     --}}
                     </ul>
                     
                     
@@ -88,27 +67,4 @@
 </section><!-- /.top-area-->
 <!-- top-area End -->
 
-                        {{-- @guest <!-- Check if user is a guest (not logged in) -->
-                            <li class="scroll"><a href="{{ route('login') }}">Sign in</a></li>
-                            <li class="scroll"><a href="{{ route('register') }}">Register</a></li>
-                        @endguest
-                        @auth <!-- Check if user is authenticated (logged in) -->
-                            <li class="scroll"><a>{{ auth()->user()->name }}</a></li>
-                            <x-responsive-nav-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-responsive-nav-link>
-    
-                        @endauth --}}
-                        {{-- <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                       
-                        <!-- Authentication -->
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form> --}}
+                 
