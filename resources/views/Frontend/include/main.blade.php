@@ -17,13 +17,14 @@
     
       <!-- Main content -->
     <!--welcome-hero start -->
-    <section class="content">
-      <img src="{{asset('frontend/assets/images/welcome-hero/banner.jpg')}}">
+	{{-- <img src="{{asset('frontend/assets/images/welcome-hero/banner.jpg')}}" > --}}
+    <section>
+     
           @yield('content')
-        </section>
+    </section>
     
 
-		<section id="home" class="welcome-hero">
+		{{-- <section id="home" class="welcome-hero"> --}}
 				{{-- <div class="container">
 
         
@@ -65,7 +66,7 @@
 				</div> 
 			</div> --}}
 
-		</section><!--/.welcome-hero-->
+		{{-- </section><!--/.welcome-hero--> --}}
 		<!--welcome-hero end -->
 
 
@@ -77,10 +78,10 @@
 			
 			
       <!-- Main Footer -->
-      @include('Frontend.include.footer')
+      {{-- @include('Frontend.include.footer')
 
       <!-- Scripts -->
-      @include('Frontend.include.script')
+      @include('Frontend.include.script') --}}
       
     
 

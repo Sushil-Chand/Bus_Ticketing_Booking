@@ -20,9 +20,9 @@
             <br>
             <h2 class="mb-4">Edit Bus Schedule</h2>
 
-            <form method="POST" action="{{ route('bus_schedules.update', $busSchedule->id) }}">
+            <form  action="{{ route('bus_schedules.update', $busSchedule->id) }}" method="POST">
                 @csrf
-                @method('put')
+                @method('patch')
 
                 <div class="form-row">
                     <div class="form-group col-md-3">
@@ -90,7 +90,7 @@
 
                     <div class="form-group col-md-3">
                         <label for="pickup_address">Pickup Address</label>
-                        <input type="text" class="form">
+                        <input type="text" class="form-control" id="pickup_address" name="pickup_address" value="{{ $busSchedule->pickup_address }}">
                     </div>
                         <div class="form-group col-md-3">
                             <label for="dropoff_address">Dropoff Address</label>
