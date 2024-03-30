@@ -22,7 +22,7 @@
 
             <form  action="{{ route('bus_schedules.update', $busSchedule->id) }}" method="POST">
                 @csrf
-                @method('patch')
+                @method('put')
 
                 <div class="form-row">
                     <div class="form-group col-md-3">
@@ -78,7 +78,7 @@
 
                     <div class="form-group col-md-3">
                         <label for="depart_time">Departure Time</label>
-                        <input type="time" class="form-control" id="depart_time" name="depart_time" value="{{ $busSchedule->depart_time }}">
+                        <input type="time" class="form-control" id="depart_time" name="depart_time" value="{{ date('H:i', strtotime($busSchedule->depart_time)) }}">
                     </div>
                 </div>
 

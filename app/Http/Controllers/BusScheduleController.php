@@ -73,7 +73,7 @@ class BusScheduleController extends Controller
             $operators = Operator::all();
             $regions = Region::all();
             $subRegions = Sub_region::all();
-
+           
             return view('admin.bus_schedules.edit', compact('busSchedule', 'buses', 'operators', 'regions', 'subRegions'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
@@ -83,27 +83,27 @@ class BusScheduleController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Bus_Schedule $busSchedule)
     {
         try {
+          
             $request->validate([
-                'bus_id' => 'required',
-                'operator_id' => 'required',
-                'region_id' => 'required',
-                'sub_region_id' => 'required',
-                'depart_date' => 'required|date',
-                'return_date' => 'required|date',
-                'depart_time' => 'required|date_format:H:i',
-                'return_time' => 'required|date_format:H:i',
-                'pickup_address' => 'required',
-                'dropoff_address' => 'required',
-                'fare_amount' => 'required|numeric',
-                'status' => 'required|boolean',
+            'bus_id' => 'required',
+            'operator_id' => 'required',
+            'region_id' => 'required',
+            'sub_region_id' => 'required',
+            'depart_date' => 'required|date',
+            'depart_time' => 'required',
+            'pickup_address' => 'required',
+            'dropoff_address' => 'required',
+            'fare_amount' => 'required',
+            'status' => 'boolean',
             ]);
-
-            $busSchedule = Bus_Schedule::findOrFail($id);
+            
+           
+           
             $busSchedule->update($request->all());
-
+            
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule updated successfully');
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');

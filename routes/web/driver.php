@@ -20,7 +20,7 @@ Route::get('/drivers/{driver}', [DriverController::class, 'show'])->name('driver
 Route::get('/drivers/{driver}/edit', [DriverController::class, 'edit'])->name('drivers.edit');
 
 // Route to update a specific driver in the database
-Route::put('/drivers/{driver}', [DriverController::class, 'update'])->name('drivers.update');
+Route::put('/drivers/{update}', [DriverController::class, 'update'])->name('drivers.update');
 
 // Route to delete a specific driver from the database
-Route::delete('/drivers/{driver}', [DriverController::class, 'destroy'])->name('drivers.destroy');
+Route::delete('/drivers/{delete}', [DriverController::class, 'destroy'])->name('drivers.destroy');

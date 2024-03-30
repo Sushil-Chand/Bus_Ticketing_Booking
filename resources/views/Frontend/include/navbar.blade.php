@@ -11,7 +11,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html">Online Bus <span> Booking</span></a>
+                    <a class="navbar-brand" href="/">Online Bus <span> Booking</span></a>
 
                 </div><!--/.navbar-header-->
                 <!-- End Header Navigation -->
@@ -22,7 +22,7 @@
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         
         
-                        <li class=" scroll active"><a href="{{route('mainhome')}}">home</a></li>
+                        <li class=""><a href="{{route('mainhome')}}">home</a></li>
                       
                         <li class="scroll"><a href="#blog">About</a></li>
                         <li class="scroll"><a href="#contact">contact</a></li>
