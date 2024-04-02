@@ -16,7 +16,9 @@ class SeatController extends Controller
 
         foreach ($busSchedules as $busSchedule) {
             $busId = $busSchedule->bus_id;
-            $bus = Bus::find($busId);
+            $bus = Bus::find($busId,);
+
+            
     
             if ($bus) {
                 $buses[] = $bus;
@@ -35,6 +37,7 @@ class SeatController extends Controller
     public function viewseats($id)
    {
 
+    
     $bus= Bus::findOrFail($id);
    
 

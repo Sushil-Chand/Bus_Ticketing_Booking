@@ -1,2 +1,0 @@
-
-@extends('Frontend.include.main')

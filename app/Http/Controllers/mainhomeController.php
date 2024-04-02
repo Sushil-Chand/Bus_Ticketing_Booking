@@ -10,4 +10,6 @@ class mainhomeController extends Controller
         
         return view('user.mainhome');
     }
+
+   
 }

@@ -18,12 +18,12 @@ class Seat extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function bus()
     {
-        return $this->belongsTo(Bus::class);
+        return $this->belongsTo(Bus::class,'bus_id');
     }
 
     public function busSchedule()

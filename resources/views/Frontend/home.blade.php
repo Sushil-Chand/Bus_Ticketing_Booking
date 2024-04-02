@@ -1,4 +1,4 @@
-@extends('Frontend.include.main')
+{{-- @extends('Frontend.include.main') --}}
 
 {{-- @section('content')
  <!--welcome-hero start -->

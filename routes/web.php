@@ -16,10 +16,11 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.mainhome');
 });
 
 
+require __DIR__ . '/web/mainhome.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +30,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     require __DIR__ . '/web/profile.php'; // profile route group
+    require __DIR__ . '/web/seat.php';
+   
+    require __DIR__ . '/web/about.php';
+    require __DIR__ . '/web/contact.php';
+
 });
 
 require __DIR__.'/auth.php';
@@ -36,7 +42,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
     require __DIR__ . '/web/user.php';
-    require __DIR__ . '/web/mainhome.php';
+    
     
 });
 
