@@ -97,7 +97,7 @@
     width: 10px;
     height: 10px;
     background: rgb(255, 255, 255);
-    outline: 0.2mm solid rgb(120, 120, 120);
+    outline: 0.2mm solid rgb(239, 235, 235);
     border-radius: 0.3mm;
   }
   .item:nth-child(2)::before {
@@ -110,7 +110,7 @@
   }
   .all-seats {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
     margin: 60px 0;
     margin-top: 20px;
@@ -121,7 +121,7 @@
     height: 20px;
     background: white;
     border-radius: 0.5mm;
-    outline: 0.3mm solid rgb(243, 7, 7);
+    outline: 0.3mm solid rgb(37, 5, 5);
     cursor: pointer;
   }
   .all-seats input:checked + label {
@@ -224,7 +224,7 @@
 <br>
 <br>
 <br> 
-    <div class="content">
+     <div class="content">
       
     
       <div class="center">
@@ -241,13 +241,8 @@
               </div>
               <div class="all-seats">
                 <input type="checkbox" name="tickets" id="s1" />
-                <label for="s1" class="seat booked">A1</label>
-                <input type="checkbox" name="tickets" id="s2" />
-                <label for="s1" class="seat booked">A2</label>
-
-                <label for="s1" class="seat booked">B1</label>
-                <input type="checkbox" name="tickets" id="s2" />
-                <label for="s1" class="seat booked">B2</label>
+                <label for="s1" class="seat booked"></label>
+               
                 
 
               </div>
@@ -311,6 +306,7 @@
           </div>
         </div>
       </div>
+      
       <script>
         let seats = document.querySelector(".all-seats");
         for (var i = 0; i < 59; i++) {
@@ -351,6 +347,80 @@
   
           
           
-    </div>
+    </div> 
+
+ 
+ 
+ 
+
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function updateTotal() {
+                let ticketCount = $('input[name="tickets"]:checked').length;
+                let totalPrice = parseFloat('{{ $busSchedule->fare_amount }}');
+                let totalAmount = ticketCount * totalPrice;
+                $('#ticket-count').text(ticketCount);
+                $('#total-amount').text(totalAmount.toFixed(2)); // Format to two decimal places
+            }
+
+            function fetchSeats() {
+                $.ajax({
+                    url: "{{ route('buses.viewseats','$seat->$seat_no') }}",
+                    method: 'GET',
+                    success: function(response) {
+                        let seatsContainer = $('#seats-container');
+                        seatsContainer.empty();
+                        response.forEach(seat => {
+                            let seatStatus = seat.booked ? 'booked' : '';
+                            let seatHTML = `
+                                <input type="checkbox" name="tickets" id="seat-${seat.id}" class="seat-checkbox" data-seat-id="${seat.id}" ${seatStatus} />
+                                <label for="seat-${seat.id}" class="seat ${seatStatus}">${seat.seat_no}</label>
+                            `;
+                            seatsContainer.append(seatHTML);
+                        });
+
+                        $('.seat-checkbox').change(function() {
+                            updateTotal();
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            fetchSeats();
+
+            $('#book-button').click(function() {
+                let selectedSeats = $('input[name="tickets"]:checked').map(function() {
+                    return $(this).data('seat-id');
+                }).get();
+
+                let busScheduleId = "{{ $busSchedule->id }}";
+
+                $.ajax({
+                    url: "{{ route('seats.book','$seat->seat_no') }}",
+                    method: 'POST',
+                    data: {
+                        seats: selectedSeats,
+                        bus_schedule_id: busScheduleId
+                    },
+                    success: function(response) {
+                        alert('Seats booked successfully!');
+                        fetchSeats();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('Failed to book seats. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
 </div>
 @endsection

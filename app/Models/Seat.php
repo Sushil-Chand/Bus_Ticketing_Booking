@@ -30,4 +30,7 @@ class Seat extends Model
     {
         return $this->belongsTo(Bus_Schedule::class, 'bus_schedules_id');
     }
+
+
+   
 }
