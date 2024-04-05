@@ -5,7 +5,7 @@
 <section id="blog" class="blog" >
     <div class="container">
         <div class="section-header">
-            <h2>news and articles</h2>
+            <h2>About the Seat Booking</h2>
             <p>Always upto date with our latest News and Articles </p>
         </div><!--/.section-header-->
         <div class="blog-content">
@@ -33,7 +33,7 @@
                             <h2><a href="#">How to find your Desired Place more quickly</a></h2>
                             <h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
+                                This is connect the connect online bus booking system. In this connect 
                             </p>
                         </div>
                     </div>
