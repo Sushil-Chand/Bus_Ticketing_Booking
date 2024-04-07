@@ -4,42 +4,7 @@
 @section('content')
 <div class="content">
     
-	<section id="home" class="welcome-hero">
-		<div class="container">
-			<div class="welcome-hero-txt">
-				<h2>Find the Best Bus Services Near You</h2>
-				<p>Discover and book bus tickets easily with just a few clicks</p>
-			</div>
-			<div class="welcome-hero-serch-box">
-				<div class="welcome-hero-form">
-					<div class="single-welcome-hero-form">
-						<h3>Destination</h3>
-						<form action="#" method="GET">
-							<input type="text" name="destination" placeholder="Enter your destination" />
-						</form>
-						<div class="welcome-hero-form-icon">
-							<i class="flaticon-bus"></i>
-						</div>
-					</div>
-					<div class="single-welcome-hero-form">
-						<h3>Date</h3>
-						<form action="#" method="GET">
-							<input type="date" name="date" />
-						</form>
-						<div class="welcome-hero-form-icon">
-							<i class="flaticon-calendar"></i>
-						</div>
-					</div>
-				</div>
-				<div class="welcome-hero-serch">
-					<button class="welcome-hero-btn" onclick="window.location.href='{{'#'}}'">
-						Search Buses <i data-feather="search"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-	</section><!--/.welcome-hero-->
-	<!--welcome-hero end -->
+	
 
 	<section id="home" class="welcome-hero">
 		<div class="container">
@@ -51,7 +16,7 @@
 				<div class="welcome-hero-form">
 					<div class="single-welcome-hero-form">
 						<h3>Destination</h3>
-						<form action="{{ route('bus_schedules.search') }}" method="GET">
+						<form action="{{ "#" }}" method="GET">
 							<input type="text" name="destination" placeholder="Enter your destination" required />
 							<!-- You can add more fields for date, time, etc. as needed -->
 							<!-- For example:
