@@ -19,7 +19,7 @@
             </div>
            
 
-            {{-- <!-- Settings Dropdown -->
+            <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -56,7 +56,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div> --}}
+            </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
