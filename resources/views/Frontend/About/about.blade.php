@@ -8,6 +8,24 @@
             <h2>About the Seat Booking</h2>
             <p>Always upto date with our latest News and Articles </p>
         </div><!--/.section-header-->
+        <div class="bus-schedule-container">
+            @foreach($busList as $busSchedule)
+                <div class="bus-schedule">
+                    <h3>{{ $busSchedule->Bus->bus_name }}</h3>
+                    <p><strong>Operator:</strong> {{ $busSchedule->Operator->name }}</p>
+                    <p><strong>Region ID:</strong> {{ $busSchedule->region_id }}</p>
+                    <p><strong>Sub Region ID:</strong> {{ $busSchedule->sub_region_id }}</p>
+                    <p><strong>Departure Date:</strong> {{ $busSchedule->depart_date }}</p>
+                    <p><strong>Departure Time:</strong> {{ $busSchedule->depart_time }}</p>
+                    <p><strong>Pickup Address:</strong> {{ $busSchedule->pickup_address }}</p>
+                    <p><strong>Dropoff Address:</strong> {{ $busSchedule->dropoff_address }}</p>
+                    <p><strong>Fare Amount:</strong> {{ $busSchedule->fare_amount }}</p>
+                    <p><strong>Status:</strong> {{ $busSchedule->status }}</p>
+                    <a href="{{ route('bus-schedule.show', $busSchedule->id) }}">View Details</a>
+                </div>
+            @endforeach
+        </div>
+        
         <div class="blog-content">
             <div class="row">
                 <div class="col-md-4 col-sm-6">

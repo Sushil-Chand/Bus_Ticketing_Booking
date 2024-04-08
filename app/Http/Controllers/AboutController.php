@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bus_Schedule;
 
 class AboutController extends Controller
 {
     //
 
     public function index(){
-        
-        return view('frontend.About.about');
+        $busList = Bus_Schedule::all(); 
+        return view('frontend.About.about',compact('busList'));
     }
 }

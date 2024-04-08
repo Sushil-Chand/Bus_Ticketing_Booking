@@ -12,8 +12,8 @@ class AdminController extends Controller
     }
 
     public function userindex()
-
-    {    $user =User::all();
+    { 
+        $user = User::where('usertype', 1)->get();
         return view('admin.user.index')->with('users', $user);
     }
 

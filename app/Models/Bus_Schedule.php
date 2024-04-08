@@ -52,5 +52,9 @@ class Bus_Schedule extends Model
         return $this->belongsTo(Sub_region::class, 'sub_region_id');
     }
 
+    public function seats()
+    {
+        return $this->hasMany(Seat::class, 'bus_schedules_id');
+    }
     // Add other relationships as needed
 }

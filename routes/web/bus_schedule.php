@@ -8,3 +8,6 @@ Route::post('/bus_schedules/store', [BusScheduleController::class, 'store'])->na
 Route::get('/bus_schedules/edit{id}', [BusScheduleController::class, 'edit'])->name('bus_schedules.edit');
 Route::put('/bus_schedules/Update{id}', [BusScheduleController::class, 'update'])->name('bus_schedules.update');
 Route::delete('/bus_schedules/delet/{id}', [BusScheduleController::class, 'destroy'])->name('bus_schedules.destroy');
+
+
+

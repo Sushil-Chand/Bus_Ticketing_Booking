@@ -73,6 +73,13 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group bmd-form-group">
+                                            <label class="bmd-label-floating">Seats Price:</label>
+                                            <input type="number" name="seats_price" id="seats_price"  placeholder="Enter seat price" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
                                             <label class="bmd-label-floating">Driver:</label>
                                             <select name="driver_id" id="driver_id" class="form-control" required>
                                                 @foreach($drivers as $driver) 

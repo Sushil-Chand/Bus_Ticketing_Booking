@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <label for="logo">Image</label>
-                        <input type="file" name="logo">
+                        <input type="file" name="logo" required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Register Operator</button>

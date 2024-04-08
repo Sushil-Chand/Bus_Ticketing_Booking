@@ -5,6 +5,7 @@ use App\Models\Operator;
 use App\Models\Driver;
 use App\Models\Bus;
 use App\Models\User;
+use App\Models\Seat;
 use Illuminate\Http\Request;
 
 class BusController extends Controller
@@ -21,6 +22,11 @@ class BusController extends Controller
         return view('admin.Buses.index', compact('buses'));
     }
 
+    private function generateBookingCode($seatNumber)
+    {
+        return 'AB-' . str_pad($seatNumber, 2, '0', STR_PAD_LEFT);
+    }
+        
     /**
      * Show the form for creating a new bus.
      *
@@ -43,27 +49,42 @@ class BusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{   
-    $request->validate([
-        'bus_name' => 'required|string',
-        'bus_code' => 'required|string',
-        'type' => 'required|string',
-        'operator_id' => 'required|exists:operators,id',
-        'total_seats' => 'required|integer',
-        'amenities'=>'required',
-        // 'user_id' => 'required|exists:users,id',
-        'driver_id' => 'required|exists:drivers,id',
-        'status' => 'required|boolean',
-    ]);
-   
-    $busData = $request->all();
-    // dd($busData); // Output the data to check if it's correct
+    {   
+        $request->validate([
+            'bus_name' => 'required|string',
+            'bus_code' => 'required|string',
+            'type' => 'required|string',
+            'operator_id' => 'required|exists:operators,id',
+            'total_seats' => 'required|integer',
+            'seats_price' => 'required|numeric',
+            'amenities'=>'required',
+            'driver_id' => 'required|exists:drivers,id',
+            'status' => 'required|boolean',
+        ]);
     
-    Bus::create($busData);
-   toast('Your Post as been submited!','error');
+        $busData = $request->all();
+        // dd($busData); // Output the data to check if it's correct
+        
+        $bus = Bus::create($busData);
 
-    return redirect(route('buses.index'))->with('success', 'Bus created successfully.');
-}
+        // Create seats for the bus
+        $seats = [];
+        for ($i = 1; $i <= $request->total_seats; $i++) {
+            $seatNumber = $i;
+            $seats[] = [
+                'seat_no' => $this->generateBookingCode($seatNumber),
+                'bus_id' => $bus->id,
+                'price' => $request->seats_price,
+                'booked' => 0,
+            ];
+        }
+
+        Seat::insert($seats); // Bulk insert seats into the database
+
+    toast('Bus and Seats created Successfully!','success');
+
+        return redirect(route('buses.index'))->with('success', 'Bus created successfully.');
+    }
 
 
     /**

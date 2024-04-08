@@ -17,9 +17,9 @@ class Bus extends Model
         'type',
         'operator_id',
         'total_seats',
+        'seats_price',
         'amenities',
         'status',
-        'user_id',
         'driver_id',
         'status'
     ];

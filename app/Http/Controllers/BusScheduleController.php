@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bus_Schedule;
 use App\Models\Bus;
+use App\Models\Seat;
 use App\Models\Operator;
 use App\Models\Region;
 use App\Models\Sub_region;
@@ -126,5 +127,25 @@ class BusScheduleController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    public function showBusSchedule($id)
+    {
+        $busSchedule = Bus_Schedule::findOrFail($id);
+    
+        $seats = Seat::where('bus_id', $busSchedule->bus_id)->get();
+        // Pass the bus schedule and seats data to the view
+        return view('admin.booking.bus-schedule-details', compact('busSchedule', 'seats'));
+    }
+
+    public function bookBus($seatId)
+    {
+        $seat = Seat::findOrFail($seatId);
+    
+        $seat->booked = true;
+        $seat->save();
+    
+        return redirect()->back();
+    }
+    
 }
 

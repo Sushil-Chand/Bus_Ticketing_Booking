@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Enums\UserType;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\BusScheduleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,8 +42,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
     require __DIR__ . '/web/user.php';
-    
-    
+    Route::get('/bus_schedules/details/{id}', [BusScheduleController::class, 'showBusSchedule'])->name('bus-schedule.show');
+    Route::get('/book_bus/{seatId}', [BusScheduleController::class, 'bookBus'])->name('book_bus');
 });
 
 
