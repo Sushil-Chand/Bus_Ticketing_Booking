@@ -59,7 +59,7 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     
 });
 
-;
+
 
 
 
