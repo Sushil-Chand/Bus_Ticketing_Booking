@@ -224,201 +224,127 @@
 <br>
 <br>
 <br> 
-     <div class="content">
-      
     
-      <div class="center">
-        <div class="tickets">
-          <div class="ticket-selector">
-            <div class="head">
-              <div class="title">Bus Name</div>
-            </div>
-            <div class="seats">
-              <div class="status">
-                <div class="item">Available</div>
-                <div class="item">Booked</div>
-                <div class="item">Selected</div>
-              </div>
-              <div class="all-seats">
-                <input type="checkbox" name="tickets" id="s1" />
-                <label for="s1" class="seat booked"></label>
-               
-                
 
+<style>
+  /* Styling for seat container */
+  .seat-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+  
+  /* Styling for each seat box */
+  .seat-box {
+      width: 45%; /* Adjust width to fit two seats in a row */
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: lightyellow; /* Default color */
+      cursor: pointer;
+  }
+  
+  /* Styling for modal */
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5); /* Black with opacity */
+  }
+  
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+  }
+  
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+  
+  </style>
+  <div class="bus-schedule-container">
+      <h2>Bus Schedule Information</h2>
+      <p>Bus Name: {{ $busSchedule->Bus->bus_name }}</p>
+      <p>Operator: {{ $busSchedule->Operator->name }}</p>
+      <!-- Display other bus schedule information as needed -->
+  
+      <div class="bus-schedule-container">
+      <h2>Seats</h2>
+      <div class="seat-container">
+          @foreach($seats as $seat)
+              <div class="seat-box" id="seat_{{ $seat->id }}" data-seat-id="{{ $seat->id }}" data-booked="{{ $seat->booked ? 'true' : 'false' }}" style="background-color: {{ $seat->booked ? 'red' : 'green' }}">
+                  {{ $seat->seat_no }}
               </div>
-            </div>
-            {{-- <div class="timings">
-              <div class="dates">
-                <input type="radio" name="date" id="d1" checked />
-                <label for="d1" class="dates-item">
-                  <div class="day">Sun</div>
-                  <div class="date">11</div>
-                </label>
-                <input type="radio" id="d2" name="date" />
-                <label class="dates-item" for="d2">
-                  <div class="day">Mon</div>
-                  <div class="date">12</div>
-                </label>
-                <input type="radio" id="d3" name="date" />
-                <label class="dates-item" for="d3">
-                  <div class="day">Tue</div>
-                  <div class="date">13</div>
-                </label>
-                <input type="radio" id="d4" name="date" />
-                <label class="dates-item" for="d4">
-                  <div class="day">Wed</div>
-                  <div class="date">14</div>
-                </label>
-                <input type="radio" id="d5" name="date" />
-                <label class="dates-item" for="d5">
-                  <div class="day">Thu</div>
-                  <div class="date">15</div>
-                </label>
-                <input type="radio" id="d6" name="date" />
-                <label class="dates-item" for="d6">
-                  <div class="day">Fri</div>
-                  <div class="date">16</div>
-                </label>
-                <input type="radio" id="d7" name="date" />
-                <label class="dates-item" for="d7">
-                  <div class="day">Sat</div>
-                  <div class="date">17</div>
-                </label>
-              </div>
-              <div class="times">
-                <input type="radio" name="time" id="t1" checked />
-                <label for="t1" class="time">11:00</label>
-                <input type="radio" id="t2" name="time" />
-                <label for="t2" class="time"> 14:30 </label>
-                <input type="radio" id="t3" name="time" />
-                <label for="t3" class="time"> 18:00 </label>
-                <input type="radio" id="t4" name="time" />
-                <label for="t4" class="time"> 21:30 </label>
-              </div>
-            </div> --}}
-          </div>
-          <div class="price">
-            <div class="total">
-              <span> <span class="count">0</span> Tickets </span>
-              <div class="amount">0</div>
-            </div>
-            <button type="button">Book</button>
-          </div>
-        </div>
+          @endforeach
       </div>
-      
-      <script>
-        let seats = document.querySelector(".all-seats");
-        for (var i = 0; i < 59; i++) {
-          let randint = Math.floor(Math.random() * 2);
-          let booked = randint === 1 ? "booked" : "";
-          seats.insertAdjacentHTML(
-            "beforeend",
-            '<input type="checkbox" name="tickets" id="s' +
-              (i + 2) +
-              '" /><label for="s' +
-              (i + 2) +
-              '" class="seat ' +
-              booked +
-              '"></label>'
-          );
-        }
+  </div>
   
-        let tickets = seats.querySelectorAll("input");
-        tickets.forEach((ticket) => {
-          ticket.addEventListener("change", () => {
-            let amount = document.querySelector(".amount").innerHTML;
-            let count = document.querySelector(".count").innerHTML;
-            amount = Number(amount);
-            count = Number(count);
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Do you want to book seat <span id="seatNo"></span>?</p>
+          <button id="confirmBooking">Yes</button>
+          <button class="close">Close</button>
+      </div>
+  </div>
   
-            if (ticket.checked) {
-              count += 1;
-              amount += 200;
-            } else {
-              count -= 1;
-              amount -= 200;
-            }
-            document.querySelector(".amount").innerHTML = amount;
-            document.querySelector(".count").innerHTML = count;
-          });
-        });
-      </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
-          
-          
-    </div> 
-
- 
- 
- 
-
-    <!-- Include jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            function updateTotal() {
-                let ticketCount = $('input[name="tickets"]:checked').length;
-                let totalPrice = parseFloat('{{ $busSchedule->fare_amount }}');
-                let totalAmount = ticketCount * totalPrice;
-                $('#ticket-count').text(ticketCount);
-                $('#total-amount').text(totalAmount.toFixed(2)); // Format to two decimal places
-            }
-
-            function fetchSeats() {
-                $.ajax({
-                    url: "{{ route('buses.viewseats','$seat->$seat_no') }}",
-                    method: 'GET',
-                    success: function(response) {
-                        let seatsContainer = $('#seats-container');
-                        seatsContainer.empty();
-                        response.forEach(seat => {
-                            let seatStatus = seat.booked ? 'booked' : '';
-                            let seatHTML = `
-                                <input type="checkbox" name="tickets" id="seat-${seat.id}" class="seat-checkbox" data-seat-id="${seat.id}" ${seatStatus} />
-                                <label for="seat-${seat.id}" class="seat ${seatStatus}">${seat.seat_no}</label>
-                            `;
-                            seatsContainer.append(seatHTML);
-                        });
-
-                        $('.seat-checkbox').change(function() {
-                            updateTotal();
-                        });
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            }
-
-            fetchSeats();
-
-            $('#book-button').click(function() {
-                let selectedSeats = $('input[name="tickets"]:checked').map(function() {
-                    return $(this).data('seat-id');
-                }).get();
-
-                let busScheduleId = "{{ $busSchedule->id }}";
-
-                $.ajax({
-                    url: "{{ route('seats.book','$seat->seat_no') }}",
-                    method: 'POST',
-                    data: {
-                        seats: selectedSeats,
-                        bus_schedule_id: busScheduleId
-                    },
-                    success: function(response) {
-                        alert('Seats booked successfully!');
-                        fetchSeats();
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        alert('Failed to book seats. Please try again.');
-                    }
-                });
-            });
-        });
-    </script>
+  <script>
+  $(document).ready(function() {
+      $('.seat-box').click(function() {
+          var seatId = $(this).data('seat-id');
+          var booked = $(this).data('booked');
+  
+          if (!booked) {
+              // Open booking modal
+              $('#bookingModal').css('display', 'block');
+  
+              // Set seat number in the modal content
+              var seatNo = $(this).text();
+              $('#seatNo').text(seatNo);
+  
+              // Store the seat ID in a data attribute of the modal
+              $('#bookingModal').data('seat-id', seatId);
+          }
+      });
+  
+      // Confirm booking
+      $('#confirmBooking').click(function() {
+          // Perform booking action (e.g., update seat status to booked)
+          var seatId = $('#bookingModal').data('seat-id');
+  
+          window.location.href = "/book_bus/" + seatId;
+  
+          // Close modal
+          $('#bookingModal').css('display', 'none');
+      });
+  
+      // Close modal when clicking on the close button
+      $('.close').click(function() {
+          $('#bookingModal').css('display', 'none');
+      });
+  });
+  </script>
 
 
 

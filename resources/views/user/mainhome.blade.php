@@ -4,70 +4,6 @@
 @section('content')
 
 <style>
-/* CSS styles for bus route search form */
-
-
-.container {
-   
-    
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="date"],
-button {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#searchResults {
-    margin-top: 20px;
-}
-
-/* Additional styles for displaying schedule data */
-.schedule {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
-
-.schedule h2 {
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.schedule p {
-    margin: 0;
-}
 
 </style>
 <div class="content">
@@ -76,24 +12,35 @@ button:hover {
 
 	<section id="home" class="welcome-hero">
 		<div class="container">
-			<div class="container">
-				<h1>Bus Route Search</h1>
-				<form id="busRouteForm">
-					<label for="city">City:</label>
-					<input type="text" id="city" name="city" required>
-					<label for="destination">Destination:</label>
-					<input type="text" id="destination" name="destination" required>
-					<label for="date">Date:</label>
-					<input type="date" id="date" name="date" required>
-					<button type="submit">Search</button>
+			<div class="welcome-hero-txt">
+				<h2>Find the Best Bus Services Near You</h2>
+				<p>Discover and book bus tickets easily with just a few clicks</p>
+			</div>
+			<div class="welcome-hero-serch-box">
+				<div class="welcome-hero-form">
+					<div class="single-welcome-hero-form">
+						<h3>Destination</h3>
+						<form action="{{ "#" }}" method="GET">
+							<input type="text" name="destination" placeholder="Enter your destination" required />
+							<!-- You can add more fields for date, time, etc. as needed -->
+							<!-- For example:
+							<h3>Date</h3>
+							<input type="date" name="date" required /> -->
+							<div class="welcome-hero-form-icon">
+								<i class="flaticon-bus"></i>
+							</div>
+						</div>
+						<!-- You can add more form fields here -->
+					</div>
+					<div class="welcome-hero-serch">
+						<button type="submit" class="welcome-hero-btn">
+							Search Buses <i data-feather="search"></i>
+						</button>
+					</div>
 				</form>
-				<div id="searchResults">
-					<!-- Search results will be displayed here -->
-				</div>
 			</div>
 		</div>
-	</div>
-</section><!--/.welcome-hero-->
+	</section><!--/.welcome-hero-->
 	
 	
 
@@ -246,57 +193,7 @@ button:hover {
 
 		</section><!--/.counter-->	
 		<!-- statistics end -->
-<script>
-	// JavaScript for bus route search form
 
-const busRouteForm = document.getElementById('busRouteForm');
-const searchResults = document.getElementById('searchResults');
-
-busRouteForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Get form values
-    const city = document.getElementById('city').value;
-    const destination = document.getElementById('destination').value;
-    const date = document.getElementById('date').value;
-
-    // Fetch data from bus_schedules table (replace with actual API call or database query)
-    fetch(`fetch_schedule.php?city=${city}&destination=${destination}&date=${date}`)
-        .then(response => response.json())
-        .then(data => {
-            // Display search results
-            displaySearchResults(data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-});
-
-function displaySearchResults(schedules) {
-    searchResults.innerHTML = ''; // Clear previous results
-
-    if (schedules.length === 0) {
-        searchResults.innerHTML = '<p>No schedules found for the selected criteria.</p>';
-        return;
-    }
-
-    schedules.forEach(schedule => {
-        const scheduleElement = document.createElement('div');
-        scheduleElement.classList.add('schedule');
-        scheduleElement.innerHTML = `
-            <h2>Bus Number: ${schedule.bus_number}</h2>
-            <p>Operator: ${schedule.operator}</p>
-            <p>Departure Date: ${schedule.depart_date}</p>
-            <p>Departure Time: ${schedule.depart_time}</p>
-            <p>Pickup Address: ${schedule.pickup_address}</p>
-            <p>Dropoff Address: ${schedule.dropoff_address}</p>
-            <p>Fare Amount: ${schedule.fare_amount}</p>
-        `;
-        searchResults.appendChild(scheduleElement);
-    });
-}
-
-</script>
 		
 </div>
 @endsection

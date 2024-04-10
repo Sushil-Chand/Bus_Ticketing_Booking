@@ -52,7 +52,7 @@
                           <td>{{ $bus->status ? 'Active' : 'Inactive' }}</td>
                        
                           <td>
-                              <a href="{{ route('buses.viewseats', $bus->id) }}" class="btn btn-sm btn-info">View Seat</a>
+                              <a href="{{ route('buses.viewseats', $busSchedule->id) }}" class="btn btn-sm btn-info">View Seat</a>
                               
                           </td>
                       </tr>

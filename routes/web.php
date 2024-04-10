@@ -31,9 +31,12 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     require __DIR__ . '/web/profile.php'; // profile route group
     require __DIR__ . '/web/seat.php';
-   
     require __DIR__ . '/web/about.php';
     require __DIR__ . '/web/contact.php';
+
+    Route::get('/bus_schedules/details/{id}', [BusScheduleController::class, 'showBusSchedule'])->name('bus-schedule.show');
+    Route::get('/book_bus/{seatId}', [BusScheduleController::class, 'bookBus'])->name('book_bus');
+
 
 });
 
@@ -42,8 +45,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
     require __DIR__ . '/web/user.php';
-    Route::get('/bus_schedules/details/{id}', [BusScheduleController::class, 'showBusSchedule'])->name('bus-schedule.show');
-    Route::get('/book_bus/{seatId}', [BusScheduleController::class, 'bookBus'])->name('book_bus');
+ //view seat
 });
 
 
@@ -56,6 +58,7 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__. '/web/region.php';
     require __DIR__. '/web/sub_region.php';
     require __DIR__. '/web/bus_schedule.php';
+    
     
 });
 
