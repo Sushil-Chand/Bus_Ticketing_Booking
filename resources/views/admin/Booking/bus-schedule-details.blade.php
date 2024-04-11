@@ -1,21 +1,33 @@
 
+@extends('frontend.include.main')
+@section('content')
 
 <style>
 /* Styling for seat container */
+
+.bus-schedule-container{
+   background-color: rgb(93, 0, 255);
+   
+}
 .seat-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
 }
 
 /* Styling for each seat box */
 .seat-box {
-    width: 45%; /* Adjust width to fit two seats in a row */
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: lightyellow; /* Default color */
-    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    margin: 60px 0;
+    margin-top: 20px;
+    position: relative;
+
+
+
+    
 }
 
 /* Styling for modal */
@@ -52,14 +64,33 @@
     cursor: pointer;
 }
 
+.content {
+            border: 3px solid black; /* Add black border */
+            padding: 20px;
+            margin: 20px;
+        }
+
+.bus-wheel{
+    width:70px; 
+    height:90px; 
+    float: right;
+    border-radius:10%;
+    padding-right:50%;
+    
+}
 
 </style>
+
+<div class="content">
 <div class="bus-schedule-container">
     <h2>Bus Schedule Information</h2>
     <p>Bus Name: {{ $busSchedule->Bus->bus_name }}</p>
     <p>Operator: {{ $busSchedule->Operator->name }}</p>
     <!-- Display other bus schedule information as needed -->
-
+    <div class="bus-wheel">
+        <img src="{{asset('images/driverwheel.png')}}" alt="Bus Wheel" >
+    </div>
+    <br>
     <div class="bus-schedule-container">
     <h2>Seats</h2>
     <div class="seat-container">
@@ -79,6 +110,7 @@
         <button id="confirmBooking">Yes</button>
         <button class="close">Close</button>
     </div>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -119,3 +151,4 @@ $(document).ready(function() {
     });
 });
 </script>
+@endsection
