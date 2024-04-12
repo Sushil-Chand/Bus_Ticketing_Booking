@@ -4,31 +4,46 @@
 
 <style>
 /* Styling for seat container */
+* {
+  box-sizing: border-box;
+}
 
 .bus-schedule-container{
-   background-color: rgb(93, 0, 255);
+   background-color: 
    
 }
 .seat-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
-}
-
-/* Styling for each seat box */
-.seat-box {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15px;
-    margin: 60px 0;
-    margin-top: 20px;
-    position: relative;
-
-
-
-    
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-gap: 5px;                         /* spacing between cells */
+    justify-content: center;
+    margin-top: 5px;
+    margin-left: 50px;
+    padding-left: 15%
 }
+
+.seat-box {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: green; /* Default color */
+    color: white;
+    border-radius: 5px;
+   
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Style for booked seats */
+.seat-box[data-booked="true"] {
+    background-color: red; /* or any other color for booked seats */
+    cursor: not-allowed;
+}
+
+
 
 /* Styling for modal */
 .modal {
@@ -65,17 +80,20 @@
 }
 
 .content {
-            border: 3px solid black; /* Add black border */
-            padding: 20px;
-            margin: 20px;
+            border: 3px solid black; 
+            background-color: #efeb23
+            padding: 10px;
+            margin: 50px;
         }
 
 .bus-wheel{
     width:70px; 
     height:90px; 
     float: right;
+    margin-right: 5px;
     border-radius:10%;
-    padding-right:50%;
+    padding-right:2rem;
+
     
 }
 
@@ -87,18 +105,34 @@
     <p>Bus Name: {{ $busSchedule->Bus->bus_name }}</p>
     <p>Operator: {{ $busSchedule->Operator->name }}</p>
     <!-- Display other bus schedule information as needed -->
-    <div class="bus-wheel">
-        <img src="{{asset('images/driverwheel.png')}}" alt="Bus Wheel" >
-    </div>
+    
     <br>
     <div class="bus-schedule-container">
     <h2>Seats</h2>
+
     <div class="seat-container">
+        <div class="bus-wheel">
+            <img src="{{asset('images/driverwheel.png')}}" alt="Bus Wheel" >
+        </div>
         @foreach($seats as $seat)
+       
             <div class="seat-box" id="seat_{{ $seat->id }}" data-seat-id="{{ $seat->id }}" data-booked="{{ $seat->booked ? 'true' : 'false' }}" style="background-color: {{ $seat->booked ? 'red' : 'green' }}">
                 {{ $seat->seat_no }}
             </div>
+           
         @endforeach
+        <div class="seat-box">
+            
+            <li>Q8</li>
+            
+
+        </div>
+        <div class="seat-box">
+            
+            <li>Q9</li>
+            
+
+        </div>
     </div>
 </div>
 
@@ -112,6 +146,12 @@
     </div>
 </div>
 </div>
+
+
+{{---test --}}
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
