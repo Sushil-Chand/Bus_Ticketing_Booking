@@ -4,7 +4,14 @@
 @section('content')
 
 <style>
-
+.bussearch{
+	padding-top: 10px;
+	background-color: rgb(243, 241, 237);
+	padding-left: 2rem;
+	/* opacity: 0.5; */
+	width: 100%;
+	
+}
 </style>
 <div class="content">
     
@@ -16,29 +23,36 @@
 				<h2>Find the Best Bus Services Near You</h2>
 				<p>Discover and book bus tickets easily with just a few clicks</p>
 			</div>
-			<div class="welcome-hero-serch-box">
-				<div class="welcome-hero-form">
-					<div class="single-welcome-hero-form">
-						<h3>Destination</h3>
-						<form action="{{ "#" }}" method="GET">
-							<input type="text" name="destination" placeholder="Enter your destination" required />
-							<!-- You can add more fields for date, time, etc. as needed -->
-							<!-- For example:
-							<h3>Date</h3>
-							<input type="date" name="date" required /> -->
-							<div class="welcome-hero-form-icon">
-								<i class="flaticon-bus"></i>
+			<div class="card-body">
+				<div class="bussearch">
+					<!-- Bus Search Form -->
+					<form action="{{ route('search_bus') }}" method="GET">
+						<div class="form-group row">
+							<label for="from" class="col-md-2 col-form-label text-md-right">From</label>
+							<div class="col-md-3">
+								<input id="from" type="text" class="form-control" name="from" required autofocus>
+							</div>
+
+							<label for="to" class="col-md-1 col-form-label text-md-right">To</label>
+							<div class="col-md-3">
+								<input id="to" type="text" class="form-control" name="to" required>
 							</div>
 						</div>
-						<!-- You can add more form fields here -->
-					</div>
-					<div class="welcome-hero-serch">
-						<button type="submit" class="welcome-hero-btn">
-							Search Buses <i data-feather="search"></i>
-						</button>
-					</div>
-				</form>
-			</div>
+
+						<div class="form-group row">
+							<label for="date" class="col-md-2 col-form-label text-md-right">Date</label>
+							<div class="col-md-2">
+								<input id="date" type="date" class="form-control" name="date" required>
+							</div>
+						</div>
+
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<button type="submit" class="btn btn-primary">Search Bus</button>
+							</div>
+						</div>
+					</form>
+				</div>
 		</div>
 	</section><!--/.welcome-hero-->
 	
