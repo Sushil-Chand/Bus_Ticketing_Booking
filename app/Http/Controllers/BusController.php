@@ -26,6 +26,9 @@ class BusController extends Controller
     {
         return 'AB-' . str_pad($seatNumber, 2, '0', STR_PAD_LEFT);
     }
+
+   
+
         
     /**
      * Show the form for creating a new bus.
