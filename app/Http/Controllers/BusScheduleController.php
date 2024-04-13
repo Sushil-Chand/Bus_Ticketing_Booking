@@ -146,6 +146,21 @@ class BusScheduleController extends Controller
     
         return redirect()->back();
     }
+
+
+    public function search(Request $request)
+    { dd('check');
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $date = $request->input('date');
+
+        $busSchedules = Bus_Schedule::where('region_id', $from)
+                                    ->where('sub_region_id', $to)
+                                    ->where('depart_date', $date)
+                                    ->get();
+
+        return view('Searchbuses.index', compact('busSchedules'));
+    }
     
 }
 
