@@ -26,7 +26,7 @@
 			<div class="card-body">
 				<div class="bussearch">
 					<!-- Bus Search Form -->
-					<form action="{{ route('search_bus') }}" method="GET">
+					<form action="#" method="GET">
 						<div class="form-group row">
 							<label for="from" class="col-md-2 col-form-label text-md-right">From</label>
 							<div class="col-md-3">

@@ -107,6 +107,11 @@
                     <i class="fas fa-bus"></i> </i> <p>Seat</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('seat.bookings')}}" class="nav-link">
+                    <i class="fas fa-book"></i> </i> <p>Bookings</p>
+                  </a>
+                </li>
 
             </li>
             

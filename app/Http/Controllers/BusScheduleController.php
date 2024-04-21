@@ -11,6 +11,7 @@ use App\Models\Region;
 use App\Models\Sub_region;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 
 class BusScheduleController extends Controller
 {
@@ -139,9 +140,11 @@ class BusScheduleController extends Controller
 
     public function bookBus($seatId)
     {
+        $user_id = Auth::id();
         $seat = Seat::findOrFail($seatId);
-    
+        
         $seat->booked = true;
+        $seat->user_id = $user_id;
         $seat->save();
     
         return redirect()->back();
@@ -160,6 +163,25 @@ class BusScheduleController extends Controller
                                     ->get();
 
         return view('Searchbuses.index', compact('busSchedules'));
+    }
+
+    public function cancelBooking($id)
+    {
+        // Find the booking by ID
+        $booking = Seat::findOrFail($id);
+
+        // Update the booking status to false (0)
+        $booking->update(['booked' => false]);
+
+        // Redirect back or wherever you want
+        return redirect()->back()->with('success', 'Booking cancelled successfully.');
+    }
+
+    public function adminbooking()
+    {
+        $bookings = Seat::whereNotNull('user_id')->get();
+
+        return view('admin.Bus_schedules.bookings', compact('bookings'));
     }
     
 }

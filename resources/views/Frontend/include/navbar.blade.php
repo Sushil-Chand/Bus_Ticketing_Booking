@@ -24,8 +24,9 @@
         
                         <li class=""><a href="{{route('mainhome')}}">home</a></li>
                       
-                        <li class=""><a href="{{route('blog')}}">About</a></li>
+                        <li class=""><a href="{{route('blog')}}">Book Bus</a></li>
                         <li class=""><a href="{{route('contact')}}">contact</a></li>
+                        <li class=""><a href="{{route('booking')}}">My Bookings</a></li>
                         @if(auth()->check()) <!-- Check if user is authenticated -->
                         <li class="nav-item dropdown position-static">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: larger;">

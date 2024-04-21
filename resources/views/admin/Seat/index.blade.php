@@ -7,7 +7,7 @@
 <style>
 
 
-  </style>
+</style>
     <div class="content-wrapper">
         <br>
         <br>      

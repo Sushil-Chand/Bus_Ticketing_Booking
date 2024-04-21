@@ -11,3 +11,4 @@ Route::delete('/bus_schedules/delet/{id}', [BusScheduleController::class, 'destr
 
 
 
+Route::get('/admin/booking/', [BusScheduleController::class, 'adminbooking'])->name('seat.bookings');
