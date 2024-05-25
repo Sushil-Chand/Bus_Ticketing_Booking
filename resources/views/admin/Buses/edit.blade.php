@@ -108,6 +108,12 @@
                                             <input type="text" name="amenities" id="amenities"    value="{{$bus->amenities }}"  class="form-control" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+                                            <label class="bmd-label-floating">Seat Price:</label>
+                                            <input type="text" name="seats_price" id="seats_price"    value="{{ $bus->seats_price  }}"  class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="text-center">

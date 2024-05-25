@@ -33,9 +33,9 @@
 							<div class="footer-social">
 								<span><i class="fa fa-phone">+977 9822515433</i></span>
 								<a href="https://www.facebook.com/sushilchand12M" target="_blank" ><i class="fa fa-facebook"></i></a>	
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-								<a href="#"><i class="fa fa-google-plus"></i></a>
+								<a href="https://x.com/sushilchand12m" target="_blank" ><i class="fa fa-twitter"></i></a>
+								<a href="https://www.linkedin.com/in/sushil-chand/" target="_blank"><i class="fa fa-linkedin"  ></i></a>
+							
 							</div>
 						</div>
 					</div>

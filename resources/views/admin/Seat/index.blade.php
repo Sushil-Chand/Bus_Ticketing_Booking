@@ -25,7 +25,7 @@
                   <th>Bus Name</th>
                   <th>Type</th>
                   <th>Total Seats</th>
-                  <th>Fare Amount</th>
+                 
                   <th>Status</th>
                   <th>View Seats</th>
               </thead>
@@ -42,7 +42,7 @@
                             @endphp
                             @if($busSchedulesForBus->isNotEmpty())
                                 @foreach($busSchedulesForBus as $busSchedule)
-                                    {{ $busSchedule->fare_amount }} <br>
+                                    {{ $bus->seats_price }} <br>
                                 @endforeach
                             @else
                                 No schedules available

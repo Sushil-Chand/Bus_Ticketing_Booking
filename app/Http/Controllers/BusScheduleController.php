@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserType;
 use Illuminate\Http\Request;
 use App\Models\Bus_Schedule;
 use App\Models\Bus;
@@ -18,22 +19,20 @@ class BusScheduleController extends Controller
     public function index()
     {
 
-            $busSchedules = Bus_Schedule::all();
-        
-            return view('admin.Bus_schedules.index', compact('busSchedules'));
-      
+        $busSchedules = Bus_Schedule::all();
+
+        return view('admin.Bus_schedules.index', compact('busSchedules'));
     }
 
     public function create()
     {
-        
-            $buses = Bus::all();
-            $operators = Operator::all();
-            $regions = Region::all();
-            $subRegions = Sub_region::all();
 
-            return view('admin.Bus_schedules.create', compact('buses', 'operators', 'regions', 'subRegions'));
-       
+        $buses = Bus::all();
+        $operators = Operator::all();
+        $regions = Region::all();
+        $subRegions = Sub_region::all();
+
+        return view('admin.Bus_schedules.create', compact('buses', 'operators', 'regions', 'subRegions'));
     }
 
     public function store(Request $request)
@@ -47,17 +46,16 @@ class BusScheduleController extends Controller
             'depart_time' => 'required',
             'pickup_address' => 'required',
             'dropoff_address' => 'required',
-            'fare_amount' => 'required',
             'status' => 'boolean',
         ]);
-    
+
         try {
             $scheduleData = $request->all();
             $scheduleData['depart_time'] = $scheduleData['depart_date'] . ' ' . $scheduleData['depart_time'];
             // Concatenate depart_date and depart_time to form a datetime value
-    
+
             Bus_Schedule::create($scheduleData);
-    
+
             toast('Success', 'success');
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule created successfully');
         } catch (Exception $e) {
@@ -65,7 +63,7 @@ class BusScheduleController extends Controller
             return back()->withInput();
         }
     }
-    
+
 
     public function edit($id)
     {
@@ -75,37 +73,36 @@ class BusScheduleController extends Controller
             $operators = Operator::all();
             $regions = Region::all();
             $subRegions = Sub_region::all();
-           
+
             return view('admin.bus_schedules.edit', compact('busSchedule', 'buses', 'operators', 'regions', 'subRegions'));
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
         } catch (Exception $e) {
             toast('Error: ' . $e->getMessage(), 'error');
-            
         }
     }
 
     public function update(Request $request, Bus_Schedule $busSchedule)
     {
         try {
-          
+
             $request->validate([
-            'bus_id' => 'required',
-            'operator_id' => 'required',
-            'region_id' => 'required',
-            'sub_region_id' => 'required',
-            'depart_date' => 'required|date',
-            'depart_time' => 'required',
-            'pickup_address' => 'required',
-            'dropoff_address' => 'required',
-            'fare_amount' => 'required',
-            'status' => 'boolean',
+                'bus_id' => 'required',
+                'operator_id' => 'required',
+                'region_id' => 'required',
+                'sub_region_id' => 'required',
+                'depart_date' => 'required|date',
+                'depart_time' => 'required',
+                'pickup_address' => 'required',
+                'dropoff_address' => 'required',
+                
+                'status' => 'boolean',
             ]);
-            
-           
-           
+
+
+
             $busSchedule->update($request->all());
-            
+
             return redirect()->route('bus_schedules.index')->with('success', 'Bus schedule updated successfully');
         } catch (ModelNotFoundException $e) {
             return redirect()->route('bus_schedules.index')->with('error', 'Bus schedule not found');
@@ -132,7 +129,7 @@ class BusScheduleController extends Controller
     public function showBusSchedule($id)
     {
         $busSchedule = Bus_Schedule::findOrFail($id);
-    
+
         $seats = Seat::where('bus_id', $busSchedule->bus_id)->get();
         // Pass the bus schedule and seats data to the view
         return view('admin.booking.bus-schedule-details', compact('busSchedule', 'seats'));
@@ -142,25 +139,25 @@ class BusScheduleController extends Controller
     {
         $user_id = Auth::id();
         $seat = Seat::findOrFail($seatId);
-        
+
         $seat->booked = true;
         $seat->user_id = $user_id;
         $seat->save();
-    
+
         return redirect()->back();
     }
 
 
     public function search(Request $request)
-    { dd('check');
+    {
         $from = $request->input('from');
         $to = $request->input('to');
         $date = $request->input('date');
 
         $busSchedules = Bus_Schedule::where('region_id', $from)
-                                    ->where('sub_region_id', $to)
-                                    ->where('depart_date', $date)
-                                    ->get();
+            ->where('sub_region_id', $to)
+            ->where('depart_date', $date)
+            ->get();
 
         return view('Searchbuses.index', compact('busSchedules'));
     }
@@ -179,10 +176,28 @@ class BusScheduleController extends Controller
 
     public function adminbooking()
     {
-        $bookings = Seat::whereNotNull('user_id')->get();
+        
+
+        // Retrieve the booking history for the user with the bus name and user name
+        $bookings = Seat::with(['bus', 'user'])
+                    ->select('seat_no', 'bus_id', 'price', 'booked', 'user_id')
+                    ->get();
+
+        // Map the results to include the bus_name and user_name
+        $bookings = $bookings->map(function ($booking) {
+            return [
+                'seat_no' => $booking->seat_no,
+                'bus_id' => $booking->bus_id,
+                'price' => $booking->price,
+                'booked' => $booking->booked,
+                'bus_name' => optional($booking->bus)->bus_name,
+                'bus_code' => optional($booking->bus)->bus_code,
+                'user_name' => optional($booking->user)->name,
+            ];
+        });
+
+
 
         return view('admin.Bus_schedules.bookings', compact('bookings'));
     }
-    
 }
-

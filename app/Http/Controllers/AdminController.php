@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Bus_Schedule;
+use App\Models\Bus;
+use App\Models\Seat;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
     public function home()
     {
-        return view('admin.dashboard');
+        $users = User::count();
+        $busSchedules = Bus_Schedule::count();
+        $buses = Bus::count();
+        $seats = Seat::count();
+
+        return view('admin.dashboard', compact('users', 'busSchedules', 'buses', 'seats'));
+        
     }
+
 
     public function userindex()
     { 
@@ -33,5 +44,16 @@ class AdminController extends Controller
         return back();
     
     }
-    
+
+
+    // public function admin_dashboard()
+    // {
+        
+    //     $Users = User::count();
+    //     $busSchedules = Bus_Schedule::count();
+    //     $buses = Bus::count();
+    //     $seats = Seat::count();
+
+    //     return view('admin.dashboard', compact('Users', 'busSchedules', 'buses', 'seats'));
+    // }
 }

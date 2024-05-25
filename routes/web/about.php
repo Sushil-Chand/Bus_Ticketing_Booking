@@ -5,4 +5,4 @@ use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/about', [AboutController::class, 'index'])->name('blog');
+Route::get('/busbook', [AboutController::class, 'index'])->name('busboks');

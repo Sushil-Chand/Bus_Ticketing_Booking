@@ -35,8 +35,8 @@
                                             <th>Total Seats</th>
                                             <th>Driver</th>
                                             <th>Amenities</th>
+                                            <th>Price</th>
                                             <th>Status</th>
-                                            <th>Created Date</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody>
@@ -50,8 +50,9 @@
                                                     <td>{{ $bus->total_seats }}</td>
                                                     <td>{{ $bus->driver->name }}</td>
                                                     <td>{{ $bus->amenities }}</td>
+                                                    <td>{{  $bus->seats_price }}</td>
                                                     <td>{{ $bus->status ? 'Active' : 'Inactive' }}</td>
-                                                    <td>{{ $bus->created_at }}</td>
+                                                    
                                                     <td>
                                                         <a href="{{ route('buses.edit', $bus->id) }}" class="btn btn-sm btn-info">Edit</a>
                                                         <form action="{{ route('buses.destroy', $bus->id) }}" method="POST" style="display:inline">

@@ -38,20 +38,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/bus_schedules/details/{id}', [BusScheduleController::class, 'showBusSchedule'])->name('bus-schedule.show');
     Route::get('/book_bus/{seatId}', [BusScheduleController::class, 'bookBus'])->name('book_bus');
-    
-    
-
 });
 
 require __DIR__.'/auth.php';
 
-
 Route::middleware(['auth', 'userType:' . UserType::User])->group(function () {
     require __DIR__ . '/web/user.php';
     
- //view seat
 });
-
 
 Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__ . '/web/admin.php'; // admin route group
@@ -62,8 +56,6 @@ Route::middleware(['auth', 'userType:' . UserType::Admin])->group(function () {
     require __DIR__. '/web/region.php';
     require __DIR__. '/web/sub_region.php';
     require __DIR__. '/web/bus_schedule.php';
-    
-    
 });
 
 

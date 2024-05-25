@@ -8,17 +8,12 @@
       <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Dashboard</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-      </li>
+     
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">{{ auth()->user()->email }}</a>
     </li>
     
   </ul>
-  
-
-        <!-- Authentication -->
         
     </div>
 </div>

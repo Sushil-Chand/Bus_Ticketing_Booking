@@ -38,7 +38,6 @@
                                             <th>Return Time</th>
                                             <th>Pick</th>
                                             <th>Drop</th>
-                                            <th>Fare Amount</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </thead>
@@ -56,7 +55,6 @@
                                                     <td>{{ $schedule->return_time }}null</td>
                                                     <td>{{ $schedule->pickup_address }}</td>
                                                     <td>{{ $schedule->dropoff_address }}</td>
-                                                    <td>Rs. {{ $schedule->fare_amount }}</td>
                                                     <td>{{ $schedule->status ? 'Active' : 'Inactive' }}</td>
                                                  
                                                     <td>

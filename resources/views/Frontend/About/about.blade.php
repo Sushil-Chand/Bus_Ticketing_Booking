@@ -33,7 +33,7 @@
                             @endphp
                             @if($busSchedulesForBus->isNotEmpty())
                                 @foreach($busSchedulesForBus as $busSchedule)
-                                    {{ $busSchedule->fare_amount }} <br>
+                                    {{  $bus->seats_price  }} <br>
                                 @endforeach
                             @else
                                 No schedules available

@@ -1,22 +1,17 @@
 @extends('Frontend.include.main')
-
-
-@section('content')
-
+@section(
+'content')
 <style>
 .bussearch{
 	padding-top: 10px;
 	background-color: rgb(243, 241, 237);
 	padding-left: 2rem;
 	/* opacity: 0.5; */
-	width: 100%;
-	
+	width: 100%;	
 }
+
 </style>
 <div class="content">
-    
-	
-
 	<section id="home" class="welcome-hero">
 		<div class="container">
 			<div class="welcome-hero-txt">
@@ -26,7 +21,7 @@
 			<div class="card-body">
 				<div class="bussearch">
 					<!-- Bus Search Form -->
-					<form action="#" method="GET">
+					<form action="{{route('busboks')}}" method="GET">
 						<div class="form-group row">
 							<label for="from" class="col-md-2 col-form-label text-md-right">From</label>
 							<div class="col-md-3">
@@ -56,56 +51,6 @@
 		</div>
 	</section><!--/.welcome-hero-->
 	
-	
-
-		<!--list-topics start -->
-		<section id="list-topics" class="list-topics">
-			<div class="container">
-				<div class="list-topics-content">
-					<ul>
-						<li>
-							<div class="single-list-topics-content">
-								<div class="single-list-topics-icon">
-									<i class="flaticon-restaurant"></i>
-								</div>
-								<h2><a href="#">resturent</a></h2>
-								<p>150 listings</p>
-							</div>
-						</li>
-						<li>
-							<div class="single-list-topics-content">
-								<div class="single-list-topics-icon">
-									<i class="flaticon-travel"></i>
-								</div>
-								<h2><a href="#">destination</a></h2>
-								<p>214 listings</p>
-							</div>
-						</li>
-						<li>
-							<div class="single-list-topics-content">
-								<div class="single-list-topics-icon">
-									<i class="flaticon-building"></i>
-								</div>
-								<h2><a href="#">hotels</a></h2>
-								<p>185 listings</p>
-							</div>
-						</li>
-						<li>
-							<div class="single-list-topics-content">
-								<div class="single-list-topics-icon">
-									<i class="flaticon-pills"></i>
-								</div>
-								<h2><a href="#">healthcaree</a></h2>
-								<p>200 listings</p>
-							</div>
-						</li>
-						
-					</ul>
-				</div>
-			</div><!--/.container-->
-
-		</section><!--/.list-topics-->
-		<!--list-topics end-->
 
 		<!--works start -->
 		<section id="works" class="works">
@@ -124,7 +69,7 @@
 								</div>
 								<h2><a href="#">choose <span> what to</span> do</a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									Nepal offers a range of activities for all types of travelers. Trek through the majestic Himalayas, explore the vibrant markets of Kathmandu, or relax by the serene lakes of Pokhara. Adventure seekers can try paragliding, while culture enthusiasts can visit ancient temples and monasteries. 
 								</p>
 								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
 									read more
@@ -138,7 +83,7 @@
 								</div>
 								<h2><a href="#">find <span> what you want</span></a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									Navigating Nepal by bus is an adventure in itself. The country has a network of buses connecting major cities and towns, offering an affordable way to travel. For long journeys, opt for tourist buses which provide more comfort and reliability compared to local buses.
 								</p>
 								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
 									read more
@@ -152,7 +97,7 @@
 								</div>
 								<h2><a href="#">explore <span> amazing</span> place</a></h2>
 								<p>
-									Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut laboremagna aliqua. 
+									Nepal is a treasure trove of amazing places. Visit the UNESCO World Heritage Sites in Kathmandu Valley, hike up to the breathtaking viewpoint of Sarangkot in Pokhara, or venture into Chitwan National Park to experience the rich wildlife. Each location promises a unique and unforgettable experience.
 								</p>
 								<button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
 									read more

@@ -83,10 +83,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="fare_amount">Fare Amount</label>
-                        <input type="number" class="form-control" id="fare_amount" name="fare_amount" value="{{ $busSchedule->fare_amount }}">
-                    </div>
+                    
 
                     <div class="form-group col-md-3">
                         <label for="pickup_address">Pickup Address</label>
